@@ -1,0 +1,13 @@
+{{> signedInHeader}}
+<h1>Trade Page</h1>
+
+<ul>
+    {{#each cryptocoins}}
+        <li>
+            {{this.name}}
+            {{this.value}}
+        </li>
+    {{/each}}
+</ul>
+
+
