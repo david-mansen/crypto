@@ -1,4 +1,4 @@
-// Import the ORM to create functions that will interact with the database.
+//test data before database connection
 var testData = [
     {
         name: "bitcoin",
@@ -12,6 +12,8 @@ var testData = [
 
 
 module.exports = function(temp){
+
+
 	var cryptocoins = {
         getData: function(){
             return testData;
@@ -41,7 +43,6 @@ module.exports = function(temp){
 
     return cryptocoins;
 
-// Export the database functions for the controller (catsController.js).
 }
 
 
