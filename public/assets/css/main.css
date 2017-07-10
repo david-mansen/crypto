@@ -32,7 +32,7 @@ p {
 }
 
 .footer {
-    position: relative;
+    position: fixed;
     margin-top: -150px; /* negative value of footer height */
     height: 150px;
     clear:both;

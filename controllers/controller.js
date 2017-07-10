@@ -13,7 +13,7 @@ router.get("/", function(req, res) {
 //     res.render("index", hbsObject);
 //   });
 });
-router.get("/", function(req, res) {
+router.get("/transactions", function(req, res) {
     res.render("transactions", {cryptocoins: model.cryptocoins.getData()});
 
 //   cat.all(function(data) {
