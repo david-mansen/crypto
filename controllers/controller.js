@@ -4,6 +4,7 @@ var model = require("../models/models.js");
 
 router.get("/", function(req, res) {
     res.render("onboard", {cryptocoins: model.cryptocoins.getData()});
+
 //   cat.all(function(data) {
 //     var hbsObject = {
 //       cats: data

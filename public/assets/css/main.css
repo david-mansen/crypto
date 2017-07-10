@@ -1,3 +1,32 @@
-body{
-    background-color: black;
+body {
+    background-color: #080808;
+    color: #eeeeee;
 }
+
+p {
+    font-size: 14px !important;
+}
+
+.main {
+    background-image: url("https://c1.staticflickr.com/4/3580/3294035146_13dd6da31a_b.jpg");
+    background-size: cover;
+    height: 400px;
+}
+
+.box1 {
+    margin-top: 130px;
+}
+
+/* White Space down box1*/
+.box2 {
+    margin-top: 400px;
+}
+
+.carousel {
+    height: 350px;
+}
+
+.item {
+    height: 300px;
+}
+
