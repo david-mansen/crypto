@@ -46,8 +46,10 @@ table{
 
 tr {
     color: #000000 !important;
+}
 
-.media-list {
-    margin-bottom: 200px;
+.last {
 
+    margin-top: 300px;
+    padding-bottom: 200px;
 }
