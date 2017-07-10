@@ -33,8 +33,12 @@ p {
 
 .footer {
     position: fixed;
-    margin-top: -150px; /* negative value of footer height */
+    margin-top: -150px;
     height: 150px;
     clear:both;
     padding-top:20px;
+}
+
+.media-list {
+    margin-bottom: 200px;
 }
