@@ -34,11 +34,16 @@ module.exports = function(app, passport){
         failureRedirect : '/signup',
         failureFlash: true
     }));
+//show transaction page
+//show trade page
+    app.get('/transaction', isLoggedIn, function(req,res){
+        res.render("transaction", {
+            user: req.user
+        });
+    });
 
-
-
-
-    app.get('/trade', isLoggedIn, function(req,res){
+//show trade page
+    app.get('/trade', isLoggedIn ,function(req,res){
         res.render("trade", {
             user: req.user
         });
