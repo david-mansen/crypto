@@ -3,7 +3,7 @@ var router = express.Router();
 var model = require("../models/models.js");
 
 router.get("/", function(req, res) {
-    res.render("trade", {cryptocoins: model.cryptocoins.getData()});
+    res.render("onboard", {cryptocoins: model.cryptocoins.getData()});
 //   cat.all(function(data) {
 //     var hbsObject = {
 //       cats: data
