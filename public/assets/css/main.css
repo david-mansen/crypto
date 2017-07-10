@@ -33,11 +33,12 @@ p {
 
 .footer {
     position: fixed;
-    margin-top: -150px; /* negative value of footer height */
+    margin-top: -150px;
     height: 150px;
     clear:both;
     padding-top:20px;
 }
+
 table{
     margin: 150px;
     background-color: white !important;
@@ -45,4 +46,8 @@ table{
 
 tr {
     color: #000000 !important;
+
+.media-list {
+    margin-bottom: 200px;
+
 }
