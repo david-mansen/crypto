@@ -38,3 +38,11 @@ p {
     clear:both;
     padding-top:20px;
 }
+table{
+    margin: 150px;
+    background-color: white !important;
+}
+
+tr {
+    color: #000000 !important;
+}
