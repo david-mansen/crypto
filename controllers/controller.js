@@ -3,7 +3,7 @@ var router = express.Router();
 var model = require("../models/models.js");
 
 router.get("/", function(req, res) {
-    res.render("trade", {cryptocoins: model.cryptocoins.getData()});
+    res.render("transactions", {cryptocoins: model.cryptocoins.getData()});
 //   cat.all(function(data) {
 //     var hbsObject = {
 //       cats: data
@@ -12,6 +12,7 @@ router.get("/", function(req, res) {
 //     res.render("index", hbsObject);
 //   });
 });
+
 
 router.post("/", function(req, res) {
 //   cat.create([
