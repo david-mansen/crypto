@@ -36,6 +36,18 @@ module.exports = function(app, passport){
     }));
 
 
+    app.get('/transactions', isLoggedIn, function(req,res){
+        res.render("transactions", {
+            user: req.user
+        });
+    });
+
+    app.get('/profile', isLoggedIn, function(req,res){
+        res.render("profile", {
+            user: req.user
+        });
+    });
+
 
 
     app.get('/trade', isLoggedIn, function(req,res){
