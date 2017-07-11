@@ -1,7 +1,11 @@
 {{> signedInHeader parentName="tradePage"}}
 <h1>Trade Page</h1>
-
+<div class="container">
+    <div class="col-md-14">
+        <div class="panel panel-primary">
 <ul>
+    <p style="color: black;">Pulling dat sweet cryptocoin data from the users wallet here</p>
+    <!--retreving that crypto data-->
     {{#each cryptocoins}}
         <li>
             {{this.name}}
@@ -9,5 +13,30 @@
         </li>
     {{/each}}
 </ul>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-6">
+        <span class="thumbnail">
+<table class="table table-striped" id="transactionsHistory">
+    ...<tr>sd aasda </tr>
+    <tr>sdasdasd</tr>
+</table>
+            </span>
+    </div>
+
+
+
+
+    <div class="col-md-6">
+        <span class="thumbnail">
+<table class="table table-striped" id="activeBets">
+    ...<tr>sd aasda </tr>
+    <tr>sdasdasd</tr>
+</table>
+            </span>
+    </div>
+</div>
 
 
