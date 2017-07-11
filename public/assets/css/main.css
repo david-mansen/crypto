@@ -58,3 +58,13 @@ table {
     background-size: cover;
     color: #eeeeee;
 }
+.list-group{
+    max-height: 400px;
+    overflow-y: auto;
+
+}
+.col-md-6{ margin-bottom: 100px;
+}
+.btn-default {
+padding-left: 500px;
+}
