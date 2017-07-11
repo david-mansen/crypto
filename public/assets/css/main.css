@@ -1,7 +1,5 @@
 body {
     background-color: #080808;
-    color: #eeeeee;
-    height: 100%;
 }
 
 p {
@@ -39,17 +37,24 @@ p {
     padding-top:20px;
 }
 
-table{
-    margin: 150px;
-    background-color: white !important;
-}
-
-tr {
-    color: #000000 !important;
-}
-
 .last {
-
-    margin-top: 300px;
     padding-bottom: 200px;
+}
+
+.carousel2 {
+    margin-top: 100px;
+}
+
+footer {
+    color: #eeeeee;
+}
+
+table {
+    background-color: #eeeeee !important;
+}
+
+.trade {
+    background-image: url("http://www.ttcwetranslate.com/wp-content/uploads/2013/11/Euro-coins-and-us-dollar-banknote-background.-Finance-web.jpg");
+    background-size: cover;
+    color: #eeeeee;
 }
