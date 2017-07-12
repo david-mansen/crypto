@@ -2,29 +2,10 @@
 //app/routes.js
 module.exports = function(app, passport){
 
-
-
-
     //home page
     app.get('/', function(req,res){
         res.render("profile");
     });
-
-
-
-
-    app.post('/', function (req,res) {
-        // return res.json();
-        console.log(req.body.name + ' Esto yaaaaaaaaaaaaaaaa');
-        res.render("profile");
-    });
-
-
-
-
-
-
-
 
     //show login form
     app.get('/signin', function(req,res){
@@ -37,9 +18,7 @@ module.exports = function(app, passport){
         failureFlash : true
     }));
     //proess the login form
-
     //app.post('/signin', do passport stuff here)
-    
 
     //show signup form
     app.get('/signup', function(req,res){
@@ -60,8 +39,6 @@ module.exports = function(app, passport){
         });
     });
 
-
-
     app.get('/transactions', isLoggedIn, function(req,res){
         res.render("transactions", {
             user: req.user
@@ -72,6 +49,14 @@ module.exports = function(app, passport){
         res.render("profile", {
             user: req.user
         });
+    });
+
+    app.post('/profile', function (req,res) {
+        console.log(req.body.email + '  ' +  req.body.pwd);
+        console.log(req.body.fname + '  ' +  req.body.lname);
+        console.log(req.body.avatar-2);
+
+        res.render("profile");
     });
 
       
@@ -96,7 +81,6 @@ function isLoggedIn(req,res,next){
 
     res.redirect('/');
 }
-
 
 // var express = require("express");
 // var router = express.Router();

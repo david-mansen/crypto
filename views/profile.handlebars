@@ -4,71 +4,70 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.js"></script>
 
 
+<form action="/profile" method="post">
+
+
 <div class="container" style="margin-top: 200px">
 
     <div class="col-md-1">
     </div>
-    <div class="col-md-3">
-        <img src="https://s-media-cache-ak0.pinimg.com/originals/f6/ac/08/f6ac0865db98ead4e3625b95822dc0d5.jpg" alt="profile" class="img-circle" height="250px">
-    </div>
 
+    <div class="col-md-3">
+    <div id="profile-container">
+        <img class="img-circle" id="profileImage" src="https://www.ivofiz.com/wp-content/uploads/2017/01/titulares-primera-segunda-tercera-persona.png" height="250px" width="250px">
+            <hr>
+            <span class="thumbnail">
+    <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
+                </span>
+    </div>
+    </div>
 
     <div class="col-md-7">
         <span class="thumbnail">
 
+    <h1><div class="username"></div></h1>
 
+    <div class="row">
 
-<form class="form form-vertical" action="/" method="post" enctype="multipart/form-data">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="email">Email Address<span class="kv-reqd">*</span></label>
+                <input type="email" class="form-control" name="email" required>
+              </div>
+            </div>
 
-    <!--<div class="row">-->
-
-        <!--<div class="col-sm-4">-->
-            <!--<div class="kv-avatar center-block text-center" style="width:200px">-->
-                <!--<img alt="pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/95845-200.png">-->
-                <!--<input id="avatar-2" name="avatar-2" type="file" class="file-loading" required>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-        <!--<div class="col-sm-8">-->
-                  <!--<div class="row">-->
-            <!--<div class="col-sm-6">-->
-              <!--<div class="form-group">-->
-                <!--<label for="email">Email Address<span class="kv-reqd">*</span></label>-->
-                <!--<input type="email" class="form-control" id="email" name="email" required>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-sm-6">-->
-              <!--<div class="form-group">-->
-                <!--<label for="pwd">Password<span class="kv-reqd">*</span></label>-->
-                <!--<input type="password" class="form-control" id="pwd" name="pwd" required>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="pwd">Password<span class="kv-reqd">*</span></label>
+                <input type="password" class="form-control" name="pwd" required>
+              </div>
+            </div>
+          </div>
 
 
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="fname">First Name</label>
-                <input type="text" class="form-control" name="fname" required>
+                <input type="text" class="form-control" name="fname" id="fname" required>
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="lname">Last Name</label>
-                <input type="text" class="form-control" id="lname" name="lname" required>
+                <input id="lname" type="text" class="form-control" name="lname" required>
               </div>
             </div>
           </div>
+
           <div class="form-group">
             <hr>
             <div class="text-right">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </div>
-        </div>
+        </span></div>
     </div>
 </form>
 
