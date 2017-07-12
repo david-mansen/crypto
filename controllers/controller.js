@@ -3,10 +3,28 @@
 module.exports = function(app, passport){
 
 
+
+
     //home page
     app.get('/', function(req,res){
         res.render("profile");
     });
+
+
+
+
+    app.post('/', function (req,res) {
+        // return res.json();
+        console.log(req.body.name + ' Esto yaaaaaaaaaaaaaaaa');
+        res.render("profile");
+    });
+
+
+
+
+
+
+
 
     //show login form
     app.get('/signin', function(req,res){
