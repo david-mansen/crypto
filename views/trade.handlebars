@@ -45,7 +45,7 @@
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="chartContainer" style="height: 300px; width: 100%;">
+                    <div id="chartContainer" style="height: 300px; width: 100%; margin-bottom: 50px">
 
                         {{> graph}}
 
@@ -53,19 +53,26 @@
 
                     <hr>
 
-                    <p> 24hr Estimation * INSERT DATA FOR ESTIMATE HERE</p>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                     </div>
 
-                    <div class="btn-group btn-group-lg" class="buttonsForChart" role="group">
-                        <button type="button" class="btn btn-default">Buy</button>
-                        <button type="button" class="btn btn-default">Sell</button>
-                        <button type="button" class="btn btn-default">Bet</button>
-                    </div>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#buy">
+                        BUY
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sell">
+                        SELL
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bet">
+                        BET
+                    </button>
+
+                    {{> tradebuy }}
+                    {{> tradesell}}
+                    {{> tradebet }}
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
