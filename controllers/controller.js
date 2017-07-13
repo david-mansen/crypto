@@ -8,7 +8,7 @@ module.exports = function(app, passport){
 
     //home page
     app.get('/', function(req,res){
-        res.render("graph");
+        res.render("trade");
     });
 
     //show login form
@@ -79,7 +79,7 @@ module.exports = function(app, passport){
 
     app.get('/database', function(req,res){
 
-        res.sendFile(path.join(__dirname + "/../views/database.json"))
+        res.sendFile(path.join(__dirname + "/../db/database.json"))
     });
 
 };

@@ -1,5 +1,5 @@
 
-$('form').on('submit', function (e) {
+$('#profile').on('submit', function (e) {
     e.preventDefault();
 
     var fname = $('#fname').val().trim();
@@ -11,11 +11,11 @@ $('form').on('submit', function (e) {
 
     }
 
-    $.post('/', updated)
+    $.post('/profile', updated)
         .done(function (data) {
             console.log(updated);
 
-            $('.username').html(updated.name + ' ' + updated.lname)
+            $('.username').html('USER: ' + updated.name + ' ' + updated.lname)
 
         })
 });
