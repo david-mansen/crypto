@@ -1,10 +1,14 @@
 
 //app/routes.js
+
+var path = require('path');
+
+
 module.exports = function(app, passport){
 
     //home page
     app.get('/', function(req,res){
-        res.render("onboard");
+        res.render("trade");
     });
 
     //show login form
@@ -71,6 +75,11 @@ module.exports = function(app, passport){
     app.get('/logout', function(req,res){
         req.logout();
         res.redirect('/');
+    });
+
+    app.get('/database', function(req,res){
+
+        res.sendFile(path.join(__dirname + "/../db/database.json"))
     });
 
 };
