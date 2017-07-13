@@ -70,3 +70,7 @@ table {
 .btn-default {
     padding-left: 500px;
 }
+
+.modal-backdrop {
+    z-index: -1;
+}
