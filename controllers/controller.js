@@ -8,7 +8,7 @@ module.exports = function(app, passport){
 
     //home page
     app.get('/', function(req,res){
-        res.render("trade");
+        res.render("onboard");
     });
 
     //show login form

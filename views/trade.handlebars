@@ -45,7 +45,7 @@
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="chartContainer" style="height: 300px; width: 100%;">
+                    <div id="chartContainer" style="height: 300px; width: 100%; margin-bottom: 50px">
 
                         {{> graph}}
 
@@ -53,68 +53,26 @@
 
                     <hr>
 
-                    <p> 24hr Estimation * INSERT DATA FOR ESTIMATE HERE</p>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                     </div>
 
-                    <div class="btn-group btn-group-lg" class="buttonsForChart" role="group">
-                        <button type="button" class="btn btn-default">Buy</button>
-                        <button type="button" class="btn btn-default">Sell</button>
-                        <button type="button" class="btn btn-default">Bet</button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#buy">
+                        BUY
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sell">
+                        SELL
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bet">
+                        BET
+                    </button>
 
+                    {{> tradebuy }}
+                    {{> tradesell}}
+                    {{> tradebet }}
 
-                        <!-- Large modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-
-                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content" style="height: 600px;">
-                                    <div class="container">
-
-                                        <h1><div class="username">Mario Iovanna</div></h1>
-
-                                        <br>
-
-
-    <form class="form-inline">
-        <div class="col-md-6">
-
-            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-            <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-                <div class="input-group-addon">.00</div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-6">
-                <select class="form-control">
-                    <option>Bitcoin</option>
-                    <option>Etheruim</option>
-                </select>
-                <div class="form-group">
-                    <label class="sr-only" for="amount"></label>
-                    <input type="number" class="form-control" id="amount" placeholder="Amount">
-                </div>
-
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Buy Coins</button>
-                                    </div>
-    </form>
-
-                                    </div>
-</div>
-</div>
-</div>
-
-
-
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
