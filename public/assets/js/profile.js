@@ -1,6 +1,5 @@
 
-
-$('form').on('submit', function (e) {
+$('#profile').on('submit', function (e) {
     e.preventDefault();
 
     var fname = $('#fname').val().trim();
@@ -9,14 +8,14 @@ $('form').on('submit', function (e) {
     var updated = {
         name: fname,
         lname: lname
+
     }
 
-    $.post('/', updated)
+    $.post('/profile', updated)
         .done(function (data) {
             console.log(updated);
 
-            $('.username').html(updated.name + ' ' + updated.lname)
-
+            $('.username').html('USER: ' + updated.name + ' ' + updated.lname)
 
         })
 });
@@ -29,6 +28,7 @@ function previewProfileImage( uploader ) {
         reader.onload = function (e) {
             //set the image data as source
             $('#profileImage').attr('src', e.target.result);
+
         }
         reader.readAsDataURL( imageFile );
     }
