@@ -1,10 +1,14 @@
 
 //app/routes.js
-module.exports = function(app, passport){
 
+var path = require('path');
+
+
+module.exports = function(app, passport){
 
     //home page
     app.get('/', function(req,res){
+
         res.render("onboard");
         orm.appWebSocket();
         orm.appAccounts();
@@ -32,9 +36,7 @@ module.exports = function(app, passport){
         failureFlash : true
     }));
     //proess the login form
-
     //app.post('/signin', do passport stuff here)
-    
 
     //show signup form
     app.get('/signup', function(req,res){
@@ -55,8 +57,6 @@ module.exports = function(app, passport){
         });
     });
 
-
-
     app.get('/transactions', isLoggedIn, function(req,res){
         res.render("transactions", {
             user: req.user
@@ -67,6 +67,14 @@ module.exports = function(app, passport){
         res.render("profile", {
             user: req.user
         });
+    });
+
+    app.post('/profile', function (req,res) {
+        console.log(req.body.email + '  ' +  req.body.pwd);
+        console.log(req.body.fname + '  ' +  req.body.lname);
+        console.log(req.body.avatar-2);
+
+        res.render("profile");
     });
 
       
@@ -83,6 +91,11 @@ module.exports = function(app, passport){
         res.redirect('/');
     });
 
+    app.get('/database', function(req,res){
+
+        res.sendFile(path.join(__dirname + "/../db/database.json"))
+    });
+
 };
     
 function isLoggedIn(req,res,next){
@@ -91,7 +104,6 @@ function isLoggedIn(req,res,next){
 
     res.redirect('/');
 }
-
 
 // var express = require("express");
 // var router = express.Router();
