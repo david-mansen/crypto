@@ -1,58 +1,6 @@
 body {
-    background-color:rgba(40, 40, 40, 1.0);
-    background: url("../img/background.jpg");
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-    font-weight: 300;
-    padding-top: 0;
+    background-color: #000000;
 }
-
-.container{
-    padding: 0 10px 0 10px;
-}
-
-.coinPanel{
-    padding: 3px 10px 3px 5px;
-    background-color: rgba(0, 0, 0, 0.6);
-    margin-bottom: 20px;
-    margin-top: 10px;
-    /*border: 1px rgba(0,0,255,.5) solid;*/
-}
-
-.marketPanel{
-    border-right: none;
-}
-
-.userCoins, .userCoins li{
-    margin: 5px 10px 5px 10px;
-    color: white;
-    padding: 0;
-    list-style: none;
-    display: inline-block;
-}
-
-.coinButton{
-    padding: 10px;
-    border: 1px solid darkslategray;
-    border-right: none;
-    background-color: rgba(0, 250, 250, 0.2);
-    width: 100%;
-}
-
-.coinButton:hover{
-    background-color: rgba(30,150,255, 0.4);
-}
-
-.coinButton:active{
-    background-color: rgba(30,100,255, 0.4);
-    border: 1px black solid;
-}
-
-
-.coinButton p, .coinButton i, .coinButton span{
-    color: white;
-    display: inline;
-}
-
 
 p {
     font-size: 14px !important;
@@ -87,7 +35,6 @@ p {
     height: 100px;
     clear:both;
     padding-top:20px;
-    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .last {
@@ -98,24 +45,18 @@ p {
     margin-top: 100px;
 }
 
-navbar-fixed-bottom {
-    background-color: rgba(0,0,0,0.6);
-    color: white;
-    height: 100px;
-}
-
-navbar-fixed-bottom p{
-    color: white;
+footer {
+    color: #eeeeee;
 }
 
 table {
-    background-color: #000 !important;
+    background-color: #eeeeee !important;
 }
 
 .trade {
     background-image: url("http://www.ttcwetranslate.com/wp-content/uploads/2013/11/Euro-coins-and-us-dollar-banknote-background.-Finance-web.jpg");
     background-size: cover;
-    color: #000;
+    color: #eeeeee;
 }
 .list-group{
     max-height: 400px;
@@ -126,59 +67,6 @@ table {
 .iHopeYouAreHappy{ margin-bottom: 100px;
 }
 
-
-
-
-
 .btn-default {
     padding-left: 500px;
-}
-
-
-.btn, input{
-    border-radius: 0 !important;
-}
-
-@-webkit-keyframes rainbow {
-  0% {color: hsl(0, 100%, 50%);}
-  100% {color: hsl(255, 100%, 50%);}
-}
-
-.rainbow-color {
-}
-
-.marketPanel{
-    background-color:rgba(0, 0, 0, 0.6);
-    padding: 0;
-    border-radius: 0;
-      -webkit-animation: rainbow 5s infinite alternate;
-
-}
-
-.graphPanel{
-    background-color:rgba(0, 0, 0, 0.6);
-    border-radius: 0;
-    
-}
-
-
-.navbar-default {
-    background: rgba(0, 0, 0, 0.6) !important;
-    box-shadow:none;  
-    border: none;
-}
-
-.navbar-default .navbar-nav>li>a {
-    font-size:20px; 
-    color:#fff; 
-}
-
-.myNav:hover .myNav>a{
-    color: white !important;
-    text-shadow: none;
-    background-color:rgba(0, 0, 0, 0.75);
-}
-ul.nav a:hover { 
-    color: #fff !important; 
-    background-color:rgba(0, 0, 0, 0.75) !important;
 }
