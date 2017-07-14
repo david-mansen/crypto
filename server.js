@@ -29,7 +29,8 @@ var configDB = require("./config/database.js");
 
 //configuration
 //connect to database
-mongoose.connect(configDB.url);
+
+ mongoose.connect(configDB.url);
 
 //pass passport for configuration
 require("./config/passport")(passport);
@@ -56,7 +57,7 @@ app.use(session({
     saveUninitialized: true
 })); //session secret
 
-app.use(passport.initialize()); 
+app.use(passport.initialize());
 app.use(passport.session()); //persistent login sessions
 app.use(flash());   //use connect-flash for flash messages stored in session
 
@@ -969,23 +970,3 @@ app.listen(port, function (req) {
 //     console.log('Headers:', JSON.stringify(response.headers));
 //     console.log('Response:', body);
 // });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

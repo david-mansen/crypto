@@ -1,5 +1,4 @@
 
-
 $('form').on('submit', function (e) {
     e.preventDefault();
 
@@ -9,7 +8,7 @@ $('form').on('submit', function (e) {
     var updated = {
         name: fname,
         lname: lname
-    }
+    };
 
     $.post('/', updated)
         .done(function (data) {

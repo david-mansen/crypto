@@ -1,5 +1,8 @@
-
 //app/routes.js
+
+var path = require('path');
+
+
 module.exports = function(app, passport){
 
     //home page
@@ -59,7 +62,7 @@ module.exports = function(app, passport){
         res.render("profile");
     });
 
-      
+
 //show trade page
     app.get('/trade', isLoggedIn ,function(req,res){
         res.render("trade", {
@@ -73,8 +76,13 @@ module.exports = function(app, passport){
         res.redirect('/');
     });
 
+    app.get('/database', function(req,res){
+
+        res.sendFile(path.join(__dirname + "/../db/database.json"))
+    });
+
 };
-    
+
 function isLoggedIn(req,res,next){
     //if authenticated
     if(req.isAuthenticated()) return next();
