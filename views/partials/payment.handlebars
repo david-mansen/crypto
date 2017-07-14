@@ -1,0 +1,49 @@
+
+
+
+<div class="modal fade buy-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="false"><img src="http://theteambuilderadrc.com/wp-content/uploads/SecureIcon_Updated.jpg" height="30px"></a>
+                <h4 class="modal-title" id="exampleModalLabel">Choice Payment Method</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" action="/profile">
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="payment" id="inlineRadio1" value="Paypal" required><img src="https://cdn.worldvectorlogo.com/logos/paypal.svg" height="50px">
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="payment" id="inlineRadio2" value="Visa" required><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2000px-Visa_Inc._logo.svg.png" height="50px">
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="payment" id="inlineRadio3" value="Mastercard" required><img src="http://orangemagazine.ph/wp-content/uploads/2015/07/MasterCard-Logo-e1438102419316.png" height="50px">
+                            </label>
+                            <hr>
+
+                            {{> creditInput}}
+
+                            <div class="col-md-6">
+                                <h4>Amount $</h4>
+                                <div class="input-group">
+                                    <div class="input-group-addon">$</div>
+                                    <input type="number" step="0.01" class="form-control" id="exampleInputAmount" placeholder="Amount" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <hr>
+                                <button type="submit" class="btn btn-primary">Transfer cash</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
