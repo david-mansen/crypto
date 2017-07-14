@@ -1,4 +1,3 @@
-
 //app/routes.js
 
 var path = require('path');
@@ -63,7 +62,7 @@ module.exports = function(app, passport){
         res.render("profile");
     });
 
-      
+
 //show trade page
     app.get('/trade', isLoggedIn ,function(req,res){
         res.render("trade", {
@@ -83,7 +82,7 @@ module.exports = function(app, passport){
     });
 
 };
-    
+
 function isLoggedIn(req,res,next){
     //if authenticated
     if(req.isAuthenticated()) return next();

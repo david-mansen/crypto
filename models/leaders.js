@@ -20,5 +20,3 @@ plumbusSchema.methods.testPlumbus = function(){
 module.exports = mongoose.model('Plumbus', plumbusSchema);
 
 
-
-

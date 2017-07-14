@@ -1,19 +1,18 @@
-
 {{> signedInHeader parentName="tradePage"}}
 
 <div class="container">
     <div class="row">
         <div class="jumbotron trade" style="margin-top: 50px">
-        <h1>Bet & Trade Market</h1>
+            <h1>Bet & Trade Market</h1>
+        </div>
     </div>
-</div>
 
     <div class="row">
         <div class="panel panel-primary">
             <ul>
                 <p style="color: black;">Pulling dat sweet cryptocoin data from the users wallet here</p>
 
-    <!--retreving that crypto data-->
+                <!--retreving that crypto data-->
                 {{#each cryptocoins}}
                     <li>
                         {{this.name}}
@@ -75,4 +74,3 @@
         </div>
     </div>
 </div>
-

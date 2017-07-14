@@ -1,4 +1,4 @@
-//models/dbAccessExample.js
+//models/leaders.js
 
 var mongoose = require('mongoose');
 
@@ -18,7 +18,6 @@ plumbusSchema.methods.testPlumbus = function(){
 
 //create model
 module.exports = mongoose.model('Plumbus', plumbusSchema);
-
 
 
 
