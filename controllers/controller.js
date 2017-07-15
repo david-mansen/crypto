@@ -1,5 +1,6 @@
 //app/routes.js
 
+var User = require("../models/user.js");
 var path = require('path');
 var userID = 0;
 
@@ -60,6 +61,16 @@ module.exports = function(app, passport){
         console.log(req.body.email + '  ' +  req.body.pwd);
         console.log(req.body.fname + '  ' +  req.body.lname);
         console.log(req.body.avatar-2);
+
+        User.findOne({_id: userID}, function (err, user) {
+            console.log(user);
+            user.local.USD = 232;
+            user.save(function (err) {
+                if(err) {
+                    console.error('ERROR!');
+                }
+            });
+        });
 
         res.render("profile");
     });

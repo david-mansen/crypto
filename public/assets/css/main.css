@@ -22,6 +22,16 @@ body {
     border-right: none;
 }
 
+.modal-content{
+    color: white;
+    background-color: #111;
+    border-radius: 0;
+}
+
+.modal{
+    background-color: rgba(0,0,0,0.5);
+}
+
 .userCoins, .userCoins li{
     margin: 5px 10px 5px 10px;
     color: white;
@@ -187,4 +197,26 @@ table {
 ul.nav a:hover { 
     color: #fff !important; 
     background-color:rgba(0, 0, 0, 0.75) !important;
+}
+
+.transactionPanel{
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 0;
+    border-radius: 0;
+    border: 3px solid rgba(0,0,0,0.5);
+}
+
+.transactionEntry{
+    padding: 10px;
+    border-right: none;
+    width: 100%;
+}
+
+.transactionEntry:hover{
+    background-color: rgba(30,150,255, 0.4);
+}
+
+.transactionEntry p, .transactionEntry i, .transactionEntry span{
+    color: white;
+    display: inline;
 }
