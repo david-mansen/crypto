@@ -1,4 +1,5 @@
 
+
 function previewProfileImage( uploader ) {
     //ensure a file was selected
     if (uploader.files && uploader.files[0]) {

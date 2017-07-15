@@ -62,17 +62,21 @@ module.exports = function(app, passport){
     app.post('/profile', function (req,res) {
 
        var money = req.body.addmoney;
-
-        console.log('esto' + money);
+       var numMoney = parseInt(money)
 
         User.findOne({_id: userID}, function (err, user) {
-            user.local.USD = 232 + money;
+
+            var old = user.local.USD;
+            var total = numMoney + old;
+
+            user.local.USD = total;
             user.save(function (err) {
                 if(err) {
                     console.error('ERROR!');
                 }
             });
         });
+
         res.render("profile");
     });
 
@@ -99,7 +103,8 @@ module.exports = function(app, passport){
 
 
         res.render("trade", {
-            userCoins: userCoins
+            userCoins: userCoins,
+            user: req.user
         });
     });
 
