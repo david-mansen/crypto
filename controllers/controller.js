@@ -47,13 +47,31 @@ module.exports = function(app, passport){
     });
 
     app.get('/transactions', isLoggedIn, function(req,res){
+        var userCoins = [
+            {
+                name:   "USD",
+                amount: 1200
+            },
+            {
+                name:   "Bitcoin",
+                amount: 0.2323
+            },{
+                name:   "Ethereum",
+                amount: 0.111
+            },
+            {
+                name:   "AntShares",
+                amount: 10000000
+            }];
+
         res.render("transactions", {
-            user: req.user
+            userCoins: userCoins
         });
     });
 
     app.get('/profile', isLoggedIn, function(req,res){
         console.log("GOT IT WOOO"+userID);
+
         res.render("profile", {
             user: req.user
         });
