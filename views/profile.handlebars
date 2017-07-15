@@ -32,12 +32,13 @@
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
 
+
                             <div class="row">
                                 <div class="col-md-5">
                                     <label>Current Balance<span class="kv-reqd">*</span></label>
                                     <div class="input-group">
                                         <div class="input-group-addon">$$$</div>
-                                        <input type="text" class="form-control" id="wallet" placeholder="00000000" readonly>
+                                        <input type="text" class="form-control" id="wallet" readonly placeholder={{this.user.local.USD}}>
                                         <div class="input-group-addon">.00</div>
                                     </div>
                                 </div>
