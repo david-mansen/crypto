@@ -44,7 +44,7 @@ body {
     padding: 10px;
     border: 1px solid darkslategray;
     border-right: none;
-    background-color: rgba(0, 250, 250, 0.2);
+    background-color: rgba(100, 100, 100, 0.2);
     width: 100%;
 }
 
@@ -220,3 +220,34 @@ ul.nav a:hover {
     color: white;
     display: inline;
 }
+
+.coinButton[isActive="true"]{
+    background-image:linear-gradient(
+        to right,
+        rgba(255,0,0,0.2) 0%,
+        rgba(255,227,0,0.2) 16.666%,
+        rgba(255,255,0,0.2) 33.333%,
+        rgba(0,255,0,0.2) 50%,
+        rgba(0,0,255,0.2) 66.666%,
+        rgba(75,0,130,0.2) 83.333%,
+        rgba(139,0,255,0.2) 100%
+        );
+}
+
+table, tr, th, td{
+    background-color: rgba(0, 0, 0, 0.0) !important;
+}
+
+
+/*
+<table id="buyTable" class="table table-inverse" style="color:white; display:none">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>USD Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>*/
