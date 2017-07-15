@@ -4,11 +4,9 @@
 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
-
-<div class="container">
+<div class="container" style="background-color: black">
     <div class="row">
-        <div class="col-md-12">
-
+        <div>
             <script>
                 //    var required = require('required');
                 //
@@ -81,6 +79,11 @@
                             [1248998400000, 13.6]
                         ];
                 Highcharts.chart('container', {
+                    labels:{
+                        style: {
+                            color: "#fff"
+                        }
+                    },
                     title: {
                         text: 'Currency Value History'
                     },
@@ -98,6 +101,10 @@
                         valueSuffix: '$'
                     },
                     legend: {
+                        color: "white"
+                    },
+                    chart: {
+                        backgroundColor: 'rgba(0,0,0,0.6)'
                     },
                     series: [{
                         name: 'Bitcoin',

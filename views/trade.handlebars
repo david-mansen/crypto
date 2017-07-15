@@ -4,17 +4,13 @@
     <div class="row">
         <div class="col-md-12 coinPanel">
             <ul class="userCoins">
-                <li>Your Coins</li>
-                <li>Your Coins</li>
-                <li>Your Coins</li>
-                <li>Your Coins</li>
-                <i class="fa fa-btc"></i>
+                {{!--<i class="fa fa-btc"></i>--}}
 
-                {{!--{{#each cryptocoins}}
-                <li>
-                    {{this.name}} {{this.value}}
+                {{#each userCoins}}
+                <li style="border-right: 1px solid gray; padding-left: 15px; padding-right: 15px; margin: 0">
+                    {{this.name}} {{this.amount}}
                 </li>
-                {{/each}}--}}
+                {{/each}}
 
             </ul>
         </div>
@@ -43,38 +39,34 @@
         </div>
 
         <div class="graphPanel panel panel-default col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div id="chartContainer" style="height: 300px; width: 100%; margin-bottom: 50px">
-
-                        {{> graph}}
-
-                    </div>
-
-                    <hr>
-
-                    <div class="col-md-4">
-                    </div>
-
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#buy">
-                        BUY
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sell">
-                        SELL
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bet">
-                        BET
-                    </button>
-
-                    {{> tradebuy }}
-                    {{> tradesell}}
-                    {{> tradebet }}
-
+            <div class="row">
+                <div class="col-md-12" id="chartContainer" style="width: 100%; padding:0">
+                    {{> graph}}
                 </div>
             </div>
+            
+
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-lg col-md-4" data-toggle="modal" data-target="#buy">
+                    BUY
+                </button>
+                <button type="button" class="btn btn-primary btn-lg col-md-4" data-toggle="modal" data-target="#sell">
+                    SELL
+                </button>
+                <button type="button" class="btn btn-primary btn-lg col-md-4" data-toggle="modal" data-target="#bet">
+                    BET
+                </button>
+            </div>
+
+            
+
         </div>
     </div>
 </div>
+
+{{> tradebuy }}
+{{> tradesell}}
+{{> tradebet }}
 
 <script>
     window.document.getElementById("tradeTab").className = "active";

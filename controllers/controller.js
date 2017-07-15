@@ -1,7 +1,7 @@
 //app/routes.js
 
 var path = require('path');
-
+var userID = 0;
 
 module.exports = function(app, passport){
 
@@ -15,11 +15,11 @@ module.exports = function(app, passport){
         res.render("signin", {message: req.flash('loginMessage')});
     });
 
-    app.post('/signin', passport.authenticate('local-login', {
-        successRedirect : '/trade',
-        failureRedirect: '/signin',
-        failureFlash : true
-    }));
+    app.post('/signin', passport.authenticate('local-login', {failureRedirect : '/signin', failureFlash: true}),
+    function(req,res){
+        userID = req.user._id;
+        res.redirect("/trade");
+    });
     //proess the login form
     //app.post('/signin', do passport stuff here)
 
@@ -27,6 +27,7 @@ module.exports = function(app, passport){
     app.get('/signup', function(req,res){
         res.render('signup', {message: req.flash('signupMessage')});
     });
+
 
     //process signup form
     app.post('/signup', passport.authenticate('local-signup', {
@@ -49,6 +50,7 @@ module.exports = function(app, passport){
     });
 
     app.get('/profile', isLoggedIn, function(req,res){
+        console.log("GOT IT WOOO"+userID);
         res.render("profile", {
             user: req.user
         });
@@ -65,8 +67,27 @@ module.exports = function(app, passport){
 
 //show trade page
     app.get('/trade', isLoggedIn ,function(req,res){
+
+        var userCoins = [
+            {
+                name:   "USD",
+                amount: 1200
+            },
+            {
+                name:   "Bitcoin",
+                amount: 0.2323
+            },{
+                name:   "Ethereum",
+                amount: 0.111
+            },
+            {
+                name:   "AntShares",
+                amount: 10000000
+            }];
+
+
         res.render("trade", {
-            user: req.user
+            userCoins: userCoins
         });
     });
 
