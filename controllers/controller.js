@@ -1,5 +1,7 @@
 //app/routes.js
 
+var bodyParser = require('body-parser');
+
 var User = require("../models/user.js");
 var path = require('path');
 var userID = 0;
@@ -58,13 +60,16 @@ module.exports = function(app, passport){
     });
 
     app.post('/profile', function (req,res) {
-        console.log(req.body.email + '  ' +  req.body.pwd);
-        console.log(req.body.fname + '  ' +  req.body.lname);
-        console.log(req.body.avatar-2);
+
+       var money = req.body.addmoney;
+       var numMoney = parseInt(money)
 
         User.findOne({_id: userID}, function (err, user) {
-            console.log(user);
-            user.local.USD = 232;
+
+            var old = user.local.USD;
+            var total = numMoney + old;
+
+            user.local.USD = total;
             user.save(function (err) {
                 if(err) {
                     console.error('ERROR!');
@@ -98,7 +103,8 @@ module.exports = function(app, passport){
 
 
         res.render("trade", {
-            userCoins: userCoins
+            userCoins: userCoins,
+            user: req.user
         });
     });
 
