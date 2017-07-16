@@ -44,7 +44,6 @@ module.exports = function(app, passport){
         res.render('signup', {message: req.flash('signupMessage')});
     });
 
-
     //process signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/trade',
@@ -53,11 +52,6 @@ module.exports = function(app, passport){
     }));
 //show transaction page
 //show trade page
-    app.get('/transaction', isLoggedIn, function(req,res){
-        res.render("transaction", {
-            user: req.user
-        });
-    });
 
     app.get('/transactions', isLoggedIn, function(req,res){
         var userCoins = [
@@ -78,7 +72,8 @@ module.exports = function(app, passport){
             }];
 
         res.render("transactions", {
-            userCoins: userCoins
+            userCoins: userCoins,
+            user: req.user
         });
     });
 
@@ -90,10 +85,31 @@ module.exports = function(app, passport){
         });
     });
 
-    app.post('/profile', function (req,res) {
+    app.post('/profile/username', function (req,res) {
 
-       var money = req.body.addmoney;
-       var numMoney = parseInt(money)
+        var usernamefull = req.body.fname + req.body.lname;
+        var nameuser = req.body.fname;
+        var lastnuser = req.body.lname;
+
+        User.findOne({_id: userID}, function (err, user) {
+            user.local.name = nameuser;
+            user.local.lastName = lastnuser;
+            user.local.username = usernamefull;
+            user.save(function (err) {
+                if (err) {
+                    console.error('ERROR!');
+                }
+                res.render("profile", {
+                    user: req.user
+                });
+            });
+        });
+    });
+
+    app.post('/profile/addmoney', function (req,res) {
+
+        var money = req.body.addmoney;
+        var numMoney = parseInt(money);
 
         User.findOne({_id: userID}, function (err, user) {
 
@@ -102,15 +118,15 @@ module.exports = function(app, passport){
 
             user.local.USD = total;
             user.save(function (err) {
-                if(err) {
+                if (err) {
                     console.error('ERROR!');
                 }
+                res.render("profile", {
+                    user: req.user
+                });
             });
         });
-
-        res.render("profile");
     });
-
 
 //show trade page
     app.get('/trade', isLoggedIn ,function(req,res){

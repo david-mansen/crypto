@@ -10,14 +10,14 @@
 
         <div class="col-md-3">
             <div id="profile-container">
-                <img class="img-circle" id="profileImage" src="https://www.ivofiz.com/wp-content/uploads/2017/01/titulares-primera-segunda-tercera-persona.png" height="250px" width="250px">
+                <img class="img-thumbnail" id="profileImage" src="https://www.ivofiz.com/wp-content/uploads/2017/01/titulares-primera-segunda-tercera-persona.png" height="250px" width="250px">
             </div>
             <hr>
         </div>
 
         <div class="col-md-7">
 
-            <h1><div class="username text-center"></div></h1>
+            <h1><div class="username text-center" style="color: white">{{this.user.local.username}}</div></h1>
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -47,7 +47,6 @@
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target=".buy-modal-lg" style="margin-top: 25px">ADD Money</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -63,7 +62,7 @@
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
 
-                            <form id="profile" action="/profile" method="post">
+                            <form action="/profile/username" method="post" onsubmit="reload()">
 
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -85,14 +84,14 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="fname">First Name</label>
-                                            <input type="text" class="form-control" name="fname" id="fname" required>
+                                            <input type="text" class="form-control" name="fname" id="fname" placeholder="{{this.user.local.name}}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lname">Last Name</label>
-                                            <input id="lname" type="text" class="form-control" name="lname" required>
+                                            <input id="lname" type="text" class="form-control" name="lname" placeholder="{{this.user.local.lastName}}" required>
                                         </div>
                                     </div>
                                 </div>
