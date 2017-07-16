@@ -1,60 +1,74 @@
 {{> signedInHeader parentName="tradePage"}}
-<div class="jumbotron trade">
-    <h1>Bet & Trade Market</h1>
-</div>
+
 <div class="container">
-    <div class="col-md-14">
-        <div class="panel panel-primary">
-<ul>
-    <p style="color: black;">Pulling dat sweet cryptocoin data from the users wallet here</p>
-    <!--retreving that crypto data-->
-    {{#each cryptocoins}}
-        <li>
-            {{this.name}}
-            {{this.value}}
-        </li>
-    {{/each}}
-</ul>
-    </div>
-    </div>
-    </div>
+    <div class="row">
+        <div class="col-md-12 coinPanel">
+            <ul class="userCoins">
+                {{!--<i class="fa fa-btc"></i>--}}
 
-    <div class="col-md-4">
-        <span>
-        <div class="list-group">
-            <a href="#" class="list-group-item disabled">
-                Crypto cash types baby.
-            </a>
-            <a href="#" class="list-group-item"> <span class="badge">Currency price</span>Bitcoin</a>
-            <a href="#" class="list-group-item"> <span class="badge">Currency price</span>Ethereum</a>
-            <a href="#" class="list-group-item"> <span class="badge">Currency price</span>Litecoin</a>
-            <a href="#" class="list-group-item"> <span class="badge">Currency price</span>Dogecoin</a>
+                {{#each userCoins}}
+                <li style="border-right: 1px solid gray; padding-left: 15px; padding-right: 15px; margin: 0">
+                    {{this.name}} {{this.amount}}
+                </li>
+                {{/each}}
+
+            </ul>
         </div>
-        </span>
     </div>
+</div>
 
+<div class="container">
+    <div class="row">
 
-
-
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <p> <div id="chartContainer" style="height: 300px; width: 100%;">
-            </div></p>
-                <br>
-                <p> 24hr Estimation * INSERT DATA FOR ESTIMATE HERE</p>
-                <div class="col-md-4"></div>
-
-                <div class="btn-group btn-group-lg" class="buttonsForChart" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">Buy</button>
-                    <button type="button" class="btn btn-default">Sell</button>
-                    <button type="button" class="btn btn-default">Bet</button>
-
-                </div>
-                </div>
+        <div class="marketPanel panel panel-default list-group col-md-3">
+            <div class="coinButton">
+                <i class="fa fa-btc"></i>
+                <p>Bitcoin</p>
+                <span class="badge">Currency price</span>
+            </div>
+            <div class="coinButton">
+                <i class="fa fa-btc"></i>
+                <p>Ethereum</p>
+                <span class="badge">Currency price</span>
+            </div>
+            <div class="coinButton">
+                <i class="fa fa-btc"></i>
+                <p>Litecoin</p>
+                <span class="badge">Currency price</span>
             </div>
         </div>
+
+        <div class="graphPanel panel panel-default col-md-9">
+            <div class="row">
+                <div class="col-md-12" id="chartContainer" style="width: 100%; padding:0">
+                    {{> graph}}
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-lg col-md-4" data-toggle="modal" data-target="#buy">
+                    BUY
+                </button>
+                <button type="button" class="btn btn-primary btn-lg col-md-4" data-toggle="modal" data-target="#sell">
+                    SELL
+                </button>
+                <button type="button" class="btn btn-primary btn-lg col-md-4" data-toggle="modal" data-target="#bet">
+                    BET
+                </button>
+            </div>
+
+            
+
+        </div>
     </div>
 </div>
 
+{{> tradebuy }}
+{{> tradesell}}
+{{> tradebet }}
+
+<script>
+    window.document.getElementById("tradeTab").className = "active";
+</script>
 

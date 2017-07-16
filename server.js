@@ -21,6 +21,7 @@ var configDB = require("./config/database.js");
 
 //configuration
 //connect to database
+
 mongoose.connect(configDB.url);
 
 //pass passport for configuration
@@ -48,7 +49,7 @@ app.use(session({
     saveUninitialized: true
 })); //session secret
 
-app.use(passport.initialize()); 
+app.use(passport.initialize());
 app.use(passport.session()); //persistent login sessions
 app.use(flash());   //use connect-flash for flash messages stored in session
 
@@ -101,23 +102,19 @@ app.listen(port, function (req) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// var request = require('request');
+//
+// request({
+//     method: 'POST',
+//     url: 'https://private-eb3c42-coinigy.apiary-mock.com/api/v1/ticker',
+//     headers: {
+//         'Content-Type': 'application/json',
+//         'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+//         'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+//     },
+//     body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"BTC/USD\"}"
+// }, function (error, response, body) {
+//     console.log('Status:', response.statusCode);
+//     console.log('Headers:', JSON.stringify(response.headers));
+//     console.log('Response:', body);
+// });

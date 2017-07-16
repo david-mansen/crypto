@@ -1,9 +1,87 @@
 body {
-    background-color: #080808;
+    background-color:rgba(40, 40, 40, 1.0);
+    background: url("../img/background.jpg");
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    padding-top: 0;
 }
+
+.container{
+    padding: 0 10px 0 10px;
+}
+
+.coinPanel{
+    padding: 3px 10px 3px 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+    margin-top: 10px;
+    /*border: 1px rgba(0,0,255,.5) solid;*/
+}
+
+.marketPanel{
+    border-right: none;
+}
+
+.modal-content{
+    color: white;
+    background-color: #111;
+    border-radius: 0;
+}
+
+.modal{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.userCoins, .userCoins li{
+    margin: 5px 10px 5px 10px;
+    color: white;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+
+.coinButton{
+    padding: 10px;
+    border: 1px solid darkslategray;
+    border-right: none;
+    background-color: rgba(100, 100, 100, 0.2);
+    width: 100%;
+}
+
+.coinButton:hover{
+    background-color: rgba(30,150,255, 0.4);
+}
+
+.coinButton:active{
+    background-color: rgba(30,100,255, 0.4);
+    border: 1px black solid;
+}
+
+
+.coinButton p, .coinButton i, .coinButton span{
+    color: white;
+    display: inline;
+}
+
 
 p {
     font-size: 14px !important;
+}
+
+footer {
+    color: #eeeeee;
+}
+
+#footer {
+    position: fixed;
+    margin-top: -150px;
+    height: 100px;
+    clear:both;
+    padding-top:20px;
+}
+
+table {
+    background-color: #eeeeee !important;
 }
 
 .main {
@@ -12,7 +90,7 @@ p {
     height: 400px;
 }
 
-.box1 {
+#box1forever {
     margin-top: 130px;
 }
 
@@ -35,36 +113,141 @@ p {
     height: 100px;
     clear:both;
     padding-top:20px;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .last {
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 }
 
 .carousel2 {
     margin-top: 100px;
 }
 
-footer {
-    color: #eeeeee;
+navbar-fixed-bottom {
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    height: 100px;
+}
+
+navbar-fixed-bottom p{
+    color: white;
 }
 
 table {
-    background-color: #eeeeee !important;
+    background-color: #000 !important;
 }
 
 .trade {
     background-image: url("http://www.ttcwetranslate.com/wp-content/uploads/2013/11/Euro-coins-and-us-dollar-banknote-background.-Finance-web.jpg");
     background-size: cover;
-    color: #eeeeee;
+    color: #000;
 }
 .list-group{
     max-height: 400px;
     overflow-y: auto;
 
 }
-.col-md-6{ margin-bottom: 100px;
+
+.iHopeYouAreHappy{ margin-bottom: 100px;
 }
+
+
+
+
+
 .btn-default {
-padding-left: 500px;
+    padding-left: 500px;
 }
+
+
+.btn, input{
+    border-radius: 0 !important;
+}
+
+.marketPanel{
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 0;
+    border-radius: 0;
+}
+
+.graphPanel{
+    background-color:rgba(0, 0, 0, 0.6);
+    border-radius: 0;
+    
+}
+
+
+.navbar-default {
+    background: rgba(0, 0, 0, 0.6) !important;
+    box-shadow:none;  
+    border: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+    font-size:20px; 
+    color:#fff; 
+}
+
+.myNav:hover .myNav>a{
+    color: white !important;
+    text-shadow: none;
+    background-color:rgba(0, 0, 0, 0.75);
+}
+ul.nav a:hover { 
+    color: #fff !important; 
+    background-color:rgba(0, 0, 0, 0.75) !important;
+}
+
+.transactionPanel{
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 0;
+    border-radius: 0;
+    border: 3px solid rgba(0,0,0,0.5);
+}
+
+.transactionEntry{
+    padding: 10px;
+    border-right: none;
+    width: 100%;
+}
+
+.transactionEntry:hover{
+    background-color: rgba(30,150,255, 0.4);
+}
+
+.transactionEntry p, .transactionEntry i, .transactionEntry span{
+    color: white;
+    display: inline;
+}
+
+.coinButton[isActive="true"]{
+    background-image:linear-gradient(
+        to right,
+        rgba(255,0,0,0.2) 0%,
+        rgba(255,227,0,0.2) 16.666%,
+        rgba(255,255,0,0.2) 33.333%,
+        rgba(0,255,0,0.2) 50%,
+        rgba(0,0,255,0.2) 66.666%,
+        rgba(75,0,130,0.2) 83.333%,
+        rgba(139,0,255,0.2) 100%
+        );
+}
+
+table, tr, th, td{
+    background-color: rgba(0, 0, 0, 0.0) !important;
+}
+
+
+/*
+<table id="buyTable" class="table table-inverse" style="color:white; display:none">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>USD Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>*/
