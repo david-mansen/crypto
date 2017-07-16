@@ -11,6 +11,19 @@ module.exports = function(app, passport){
     //home page
     app.get('/', function(req,res){
         res.render("onboard");
+        orm.appWebSocket();
+        orm.appAccounts();
+        orm.appBalances();
+        orm.appBalanceHistory();
+        orm.appOrders();
+        orm.appAlerts();
+        orm.appUserWatchList();
+        orm.appNewsFeed();
+        orm.appUpdateUser();
+        orm.appSavePrefs();
+
+
+
     });
 
     //show login form
