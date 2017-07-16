@@ -1,6 +1,6 @@
 
 $('form').on('submit', function () {
-    $(document).refresh();
+    $(document).reload();
 });
 
 function previewProfileImage( uploader ) {
