@@ -79,8 +79,24 @@ module.exports = function(app, passport){
 
     app.post('/profile', function (req,res) {
 
-       var money = req.body.addmoney;
-       var numMoney = parseInt(money)
+       var usernamefull = req.body.fname + req.body.lname;
+       var nameuser =  req.body.fname;
+       var lastnuser =  req.body.lname;
+
+        User.findOne({_id: userID}, function (err, user) {
+            user.local.name = nameuser;
+            user.local.lastName = lastnuser;
+            user.local.username = usernamefull;
+            user.save(function (err) {
+                if(err) {
+                    console.error('ERROR!');
+                }
+            });
+        });
+
+        // -------------------
+        var money = req.body.addmoney;
+        var numMoney = parseInt(money);
 
         User.findOne({_id: userID}, function (err, user) {
 
@@ -95,7 +111,9 @@ module.exports = function(app, passport){
             });
         });
 
-        res.render("profile");
+        res.render("profile", {
+            user: req.user
+        });
     });
 
 

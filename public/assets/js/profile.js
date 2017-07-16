@@ -1,4 +1,7 @@
 
+$('form').on('submit', function () {
+    $(document).refresh();
+});
 
 function previewProfileImage( uploader ) {
     //ensure a file was selected
