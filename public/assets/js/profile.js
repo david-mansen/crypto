@@ -1,7 +1,10 @@
 
-$('form').on('submit', function () {
-    $(document).reload();
-});
+
+function reload() {
+    $(document).reload(true);
+}
+
+reload()
 
 function previewProfileImage( uploader ) {
     //ensure a file was selected
