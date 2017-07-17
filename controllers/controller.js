@@ -46,25 +46,44 @@ module.exports = function (app, passport) {
 
         var userCoins = [
             {
-                name:   "USD",
-                amount: 1200
+                name: "USD",
+                amount: 0
             },
             {
-                name:   "Bitcoin",
-                amount: 0.2323
-            },{
-                name:   "Ethereum",
-                amount: 0.111
-            },
-            {
-                name:   "AntShares",
-                amount: 10000000
+                name: "BTC",
+                amount: 0
+            }, {
+                name: "ETH",
+                amount: 0
             }];
 
+        var marketCoins = [
+            {
+                name: "BTC",
+                value: 0
+            },{
+                name: "ETH",
+                value: 0
+            }];
 
-        res.render("transactions", {
-            userCoins: userCoins,
-            user: req.user
+        User.findOne({_id: userID}, function (err, user) {
+            console.log(user);
+            userCoins[0].amount = user.local.USD;
+            userCoins[1].amount = user.local.BTC;
+            userCoins[2].amount = user.local.ETH;
+
+            var userInfo = {
+                userName: user.local.username,
+                firstName: user.local.name,
+                lastName: user.local.lastname,
+                pictureURL: user.local.picture
+            };
+            console.log("eth",user.ETH);
+
+            res.render("transactions", {
+                userCoins: userCoins,
+                user: req.user
+            });
         });
     });
 
