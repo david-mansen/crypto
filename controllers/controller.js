@@ -13,9 +13,6 @@ module.exports = function (app, passport) {
     //home page
     app.get('/', function (req, res) {
         res.render("onboard");
-
-
-
     });
 
     //show login form
@@ -182,7 +179,18 @@ module.exports = function (app, passport) {
         });
     });
 
-    //logout
+    app.get('/trade/buycoin', function (req, res) {
+
+        var bitcoinprice = 3500;
+
+
+
+
+
+
+    });
+
+        //logout
     app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
