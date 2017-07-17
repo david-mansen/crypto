@@ -156,7 +156,7 @@ module.exports = function (app, passport) {
 
         User.findOne({_id: userID}, function (err, user, done) {
             var old = user.local.USD;
-            if (old > coinprice) {
+            if (old > coinprice || old == coinprice) {
                 var total = old - coinprice;
                 user.local.USD = total;
                 user.save(function (err) {
