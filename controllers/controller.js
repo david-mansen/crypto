@@ -154,7 +154,7 @@ module.exports = function (app, passport) {
                 amount: 0
             }];
 
-         var marketCoins = [
+        var marketCoins = [
             {
                 name: "BTC",
                 value: 0
@@ -258,12 +258,49 @@ module.exports = function (app, passport) {
     });
 
     app.get('/livedata', isLoggedIn, function(req,res){
-        var temp = {
-            time: "blah",
-            price: 100
+
+        var marketCoins = {
+            timestamp: 0,
+            coins: [{
+                name: "BTC",
+                value: 0
+            },{
+                name: "ETH",
+                value: 0
+            }]
         };
 
-        res.send(JSON.stringify(temp));
+        request({
+            method: 'POST',
+            url: 'https://api.coinigy.com/api/v1/ticker',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+        },
+        body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"BTC/USD\"}"
+        }, function (error, response, body) {
+            var temp = JSON.parse(body);
+            marketCoins.coins[0].value = parseFloat(temp.data[0].last_trade).toFixed(2);
+
+            request({
+                method: 'POST',
+                url: 'https://api.coinigy.com/api/v1/ticker',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                    'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+            },
+            body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"ETH/USD\"}"
+        }, function (error, response, body) {
+                var parsedBody = JSON.parse(body);
+                marketCoins.coins[1].value = parseFloat(parsedBody.data[0].last_trade).toFixed(2);
+                marketCoins.timestamp = Date.parse(temp.data[0].timestamp);
+                res.send(JSON.stringify(marketCoins));
+            });
+        });
+
+        
     });
 
 };

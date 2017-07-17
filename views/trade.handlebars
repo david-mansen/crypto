@@ -7,7 +7,7 @@
                 {{!--<i class="fa fa-btc"></i>--}}
 
                 {{#each userCoins}}
-                <li style="border-right: 1px solid gray; padding-left: 15px; padding-right: 15px; margin: 0">
+                <li  style="border-right: 1px solid gray; padding-left: 15px; padding-right: 15px; margin: 0">
                     {{this.name}} {{this.amount}}
                 </li>
                 {{/each}}
@@ -21,11 +21,14 @@
     <div class="row">
 
         <div class="marketPanel panel panel-default list-group col-md-2">
+            <div id="allButton" class="coinButton">
+                    <p>Show All</p>
+            </div>
             
             {{#each marketCoins}}
-                <div class="coinButton">
+                <div id="{{this.name}}Button" class="coinButton">
                     <p>{{this.name}}</p>
-                    <span class="badge">{{this.value}}</span>
+                    <span id="{{this.name}}Label" class="badge">{{this.value}}</span>
                 </div>
             {{/each}}
         </div>
@@ -63,7 +66,17 @@
 <script>
     window.document.getElementById("tradeTab").className = "active";
 
-    
+    var liveDataLabelRequest = function(){
+        $.get("/livedata", function(data){
+            var parsed = JSON.parse(data);
+            
+            $("#BTCLabel").text(parsed.coins[0].value);
+            $("#ETHLabel").text(parsed.coins[1].value);
+        });
+    }
+
+    //var timer = setInterval(dataRequestFunction, 2000);
+    var timer2 = setInterval(liveDataLabelRequest, 5000);
     
 </script>
 
