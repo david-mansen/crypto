@@ -11,16 +11,6 @@ module.exports = function (app, passport) {
     //home page
     app.get('/', function (req, res) {
         res.render("onboard");
-        orm.appWebSocket();
-        orm.appAccounts();
-        orm.appBalances();
-        orm.appBalanceHistory();
-        orm.appOrders();
-        orm.appAlerts();
-        orm.appUserWatchList();
-        orm.appNewsFeed();
-        orm.appUpdateUser();
-        orm.appSavePrefs();
 
 
 
@@ -52,13 +42,6 @@ module.exports = function (app, passport) {
     }));
 //show transaction page
 //show trade page
-
-    app.get('/transaction', isLoggedIn, function (req, res) {
-        res.render("transaction", {
-            user: req.user
-        });
-    });
-
 
     app.get('/transactions', isLoggedIn, function(req,res){
         var userCoins = [

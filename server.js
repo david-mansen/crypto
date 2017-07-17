@@ -99,8 +99,7 @@ app.listen(port, function (req) {
 
         //res.render('Status:', response.statusCode);
         //res.render('Headers:', JSON.stringify(response.headers));
-        //res.render('Response:', body);
-    });
+        //res.render('Response:', body)
 
 
 
