@@ -1,6 +1,16 @@
-/**
- * Created by kevin on 7/17/2017.
- */
+$(document).ready(function () {
+
+    $('#amount').keyup(function () {
+
+        var coin = $('.coin').val();
+        var quantities = $('#amount').val().trim();
+
+        var total = coin * quantities;
+
+        $('#total').attr('placeholder', total);
+    });
+});
+
 getData: function () {
     app.get("/Orders", function (req, res) {
 

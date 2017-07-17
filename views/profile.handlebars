@@ -5,6 +5,12 @@
 
     <div class="row">
 
+        {{#if tradebuycoin.length}}
+            <div class="alert alert-danger text-center">
+                <h1>{{tradebuycoin}}</h1>
+            </div>
+        {{/if}}
+
         <div class="col-md-1">
         </div>
 
@@ -13,6 +19,7 @@
                 <img class="img-responsive profilepic" src="{{this.user.local.picture}}">
             </div>
             <hr>
+
         </div>
 
         <div class="col-md-7">
@@ -127,4 +134,3 @@
 </script>
 {{> payment }}
 
-<script src="/assets/js/profile.js"></script>
