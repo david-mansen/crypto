@@ -1,5 +1,8 @@
 //app/routes.js
 
+var bodyParser = require('body-parser');
+
+var User = require("../models/user.js");
 var path = require('path');
 var userID = 0;
 
@@ -8,6 +11,19 @@ module.exports = function (app, passport) {
     //home page
     app.get('/', function (req, res) {
         res.render("onboard");
+        orm.appWebSocket();
+        orm.appAccounts();
+        orm.appBalances();
+        orm.appBalanceHistory();
+        orm.appOrders();
+        orm.appAlerts();
+        orm.appUserWatchList();
+        orm.appNewsFeed();
+        orm.appUpdateUser();
+        orm.appSavePrefs();
+
+
+
     });
 
     //show login form
@@ -28,7 +44,6 @@ module.exports = function (app, passport) {
         res.render('signup', {message: req.flash('signupMessage')});
     });
 
-
     //process signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/trade',
@@ -37,58 +52,92 @@ module.exports = function (app, passport) {
     }));
 //show transaction page
 //show trade page
+
     app.get('/transaction', isLoggedIn, function (req, res) {
         res.render("transaction", {
             user: req.user
         });
     });
 
-    app.get('/transactions', isLoggedIn, function (req, res) {
+
+    app.get('/transactions', isLoggedIn, function(req,res){
+        var userCoins = [
+            {
+                name:   "USD",
+                amount: 1200
+            },
+            {
+                name:   "Bitcoin",
+                amount: 0.2323
+            },{
+                name:   "Ethereum",
+                amount: 0.111
+            },
+            {
+                name:   "AntShares",
+                amount: 10000000
+            }];
+
+
         res.render("transactions", {
+            userCoins: userCoins,
             user: req.user
         });
     });
 
-    app.get('/profile', isLoggedIn, function (req, res) {
-        console.log("GOT IT WOOO" + userID);
+
+    app.get('/profile', isLoggedIn, function(req,res){
+        console.log("GOT IT WOOO"+userID);
+
         res.render("profile", {
             user: req.user
         });
     });
 
-    app.post('/profile', function (req, res) {
-        console.log(req.body.email + '  ' + req.body.pwd);
-        console.log(req.body.fname + '  ' + req.body.lname);
-        console.log(req.body.avatar - 2);
 
-        res.render("profile");
+    app.post('/profile/username', function (req,res) {
+
+        var usernamefull = req.body.fname + req.body.lname;
+        var nameuser = req.body.fname;
+        var lastnuser = req.body.lname;
+        var pic = req.body.pictureuser;
+
+        User.findOne({_id: userID}, function (err, user) {
+            user.local.name = nameuser;
+            user.local.lastName = lastnuser;
+            user.local.username = usernamefull;
+            user.local.picture = pic;
+            user.save(function (err) {
+                if (err) {
+                    console.error('ERROR!');
+                }
+                res.redirect('/profile');
+            });
+        });
     });
 
+    app.post('/profile/addmoney', function (req,res) {
+
+        var money = req.body.addmoney;
+        var numMoney = parseInt(money);
+
+        User.findOne({_id: userID}, function (err, user) {
+
+            var old = user.local.USD;
+            var total = numMoney + old;
+
+            user.local.USD = total;
+            user.save(function (err) {
+                if (err) {
+                    console.error('ERROR!');
+                }
+                res.redirect('/profile');
+            });
+        });
+    });
 
 //show trade page
     app.get('/trade', isLoggedIn, function (req, res) {
-
-        //=======================
-        var LIMIT = 400;
-        var SOCKET_COUNT = 0;
-        //=======================
-        /**
-         * This is the websocket logging every 400th data point
-         */
-
-        var Gdax = require('gdax');
-        var websocket = new Gdax.WebsocketClient(['BTC-USD', 'ETH-USD']);
-        websocket.on('message', function (data) {
-            if (SOCKET_COUNT !== LIMIT) {
-                SOCKET_COUNT++;
-                return;
-            } else {
-                //Do logic with data [log(data)]
-                console.log(data);
-                SOCKET_COUNT = 0;
-                return;
-            }
-        });
 
         var userCoins = [
             {
@@ -109,7 +158,8 @@ module.exports = function (app, passport) {
 
 
         res.render("trade", {
-            userCoins: userCoins
+            userCoins: userCoins,
+            user: req.user
         });
     });
 

@@ -10,14 +10,14 @@
 
         <div class="col-md-3">
             <div id="profile-container">
-                <img class="img-circle" id="profileImage" src="https://www.ivofiz.com/wp-content/uploads/2017/01/titulares-primera-segunda-tercera-persona.png" height="250px" width="250px">
+                <img class="img-responsive profilepic" src="{{this.user.local.picture}}">
             </div>
             <hr>
         </div>
 
         <div class="col-md-7">
 
-            <h1><div class="username text-center"></div></h1>
+            <h1><div class="username text-center" style="color: white">{{this.user.local.username}}</div></h1>
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -32,12 +32,13 @@
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
 
+
                             <div class="row">
                                 <div class="col-md-5">
                                     <label>Current Balance<span class="kv-reqd">*</span></label>
                                     <div class="input-group">
-                                        <div class="input-group-addon">$$$</div>
-                                        <input type="text" class="form-control" id="wallet" placeholder="00000000" readonly>
+                                        <div class="input-group-addon">$ Usd</div>
+                                        <input type="text" class="form-control" id="wallet" readonly placeholder={{this.user.local.USD}}>
                                         <div class="input-group-addon">.00</div>
                                     </div>
                                 </div>
@@ -46,7 +47,6 @@
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target=".buy-modal-lg" style="margin-top: 25px">ADD Money</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
 
-                            <form id="profile" action="/profile" method="post">
+                            <form action="/profile/username" method="post" onsubmit="reload()">
 
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -84,14 +84,14 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="fname">First Name</label>
-                                            <input type="text" class="form-control" name="fname" id="fname" required>
+                                            <input type="text" class="form-control" name="fname" id="fname" placeholder="{{this.user.local.name}}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lname">Last Name</label>
-                                            <input id="lname" type="text" class="form-control" name="lname" required>
+                                            <input id="lname" type="text" class="form-control" name="lname" placeholder="{{this.user.local.lastName}}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -99,10 +99,11 @@
                                 <hr>
 
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <h4>Profile Picture</h4>
-                                         <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required capture>
-                                        </div>
+                                        <div class="form-group">
+                                            <label for="pictureuser">URL Profile Picture</label>
+                                            <input type="url" class="form-control" name="pictureuser" placeholder="https://example-Image.jpg" required>
+
+
                                         <hr>
                                     </div>
 
