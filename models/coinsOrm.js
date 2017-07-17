@@ -9,64 +9,9 @@
 
 var request = require('request');
 
-// //=======================
-// var LIMIT = 400;
-// var SOCKET_COUNT = 0;
-// //=======================
-//
-// var Gdax = require('gdax');
-//
-// var websocket = new Gdax.WebsocketClient(['BTC-USD', 'ETH-USD']);
-
 module.exports = {
 
-//
-//     //=======================
-//     var LIMIT = 400;
-// var SOCKET_COUNT = 0;
-// //=======================
-// /**
-//  * This is the websocket logging every 400th data point
-//  */
-// var Gdax = require('gdax');
-// var websocket = new Gdax.WebsocketClient(['BTC-USD', 'ETH-USD']);
-// websocket.on('message', function (data) {
-//     if (SOCKET_COUNT !== LIMIT) {
-//         SOCKET_COUNT++;
-//         return;
-//     } else {
-//         //Do logic with data [log(data)]
-//         console.log(data);
-//         SOCKET_COUNT = 0;
-//         return;
-//     }
-// });
-
-    //
-    // /**
-    //  * This is the websocket logging every 400th data point
-    //  */
-    //
-    // appWebSocket: function (callback) {
-    //
-    //     var Gdax = require('gdax');
-    //
-    //
-    //
-    //
-    //     request({
-    //
-    //         websocket: Gdax.WebsocketClient(['BTC-USD', 'ETH-USD'])
-    //
-    //
-    //     )
-    // }
-    //
-    //
-    // },
-
-
-    appAccounts: function (callback) {
+    appAccounts: function ( callback ) {
 
         // Make a request to get accounts from remote service
         request({
@@ -93,22 +38,22 @@ module.exports = {
      */
 
 
-    appBalances: function (callback) {
+    appBalances: function ( callback ) {
 
-        request({
-            method: 'POST',
-            url: 'https://private-eb3c42-coinigy.apiary-mock.com/api/v1/balances',
-            headers: {
-                'Content-Type': 'application/json,application/json',
-                'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
-                'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
-            },
-            body: "{  \"show_nils\": 0,  \"auth_ids\": \"\"}"
-        }, function (error, response, body) {
+            request({
+                method: 'POST',
+                url: 'https://private-eb3c42-coinigy.apiary-mock.com/api/v1/balances',
+                headers: {
+                    'Content-Type': 'application/json,application/json',
+                    'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                    'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+                },
+                body: "{  \"show_nils\": 0,  \"auth_ids\": \"\"}"
+            }, function (error, response, body) {
 
-            callback(body);
+                callback(body);
 
-        });
+            });
     },
 
 
@@ -119,7 +64,7 @@ module.exports = {
      */
 
 
-    appBalanceHistory: function (callback) {
+    appBalanceHistory: function ( callback ) {
 
         request({
             method: 'POST',
@@ -146,7 +91,7 @@ module.exports = {
 
 
 
-    appOrders: function (callback) {
+    appOrders: function ( callback ) {
 
         request({
             method: 'POST',
@@ -164,6 +109,7 @@ module.exports = {
     },
 
 
+
     /**
      * List Alerts
      *
@@ -171,7 +117,7 @@ module.exports = {
      */
 
 
-    appAlerts: function (callback) {
+    appAlerts: function ( callback ) {
 
         request({
             method: 'POST',
@@ -189,6 +135,7 @@ module.exports = {
     },
 
 
+
     /**
      * Watch List
      *
@@ -196,7 +143,7 @@ module.exports = {
      */
 
 
-    appUserWatchList: function (callback) {
+    appUserWatchList: function ( callback ) {
 
         request({
             method: 'POST',
@@ -214,6 +161,7 @@ module.exports = {
     },
 
 
+
     /**
      * List News Articles
      *
@@ -222,7 +170,7 @@ module.exports = {
 
 
 
-    appNewsFeed: function (callback) {
+    appNewsFeed: function ( callback ) {
 
         request({
             method: 'POST',
@@ -240,6 +188,7 @@ module.exports = {
     },
 
 
+
 //********************************************************************************************************
 
     /**
@@ -251,6 +200,9 @@ module.exports = {
 //********************************************************************************************************
 
 
+
+
+
     /**
      * Update User Data
      *
@@ -260,7 +212,7 @@ module.exports = {
 
 
 
-    appUpdateUser: function (callback) {
+    appUpdateUser: function ( callback ) {
 
         request({
             method: 'POST',
@@ -286,7 +238,7 @@ module.exports = {
      */
 
 
-    appSavePrefs: function (callback) {
+    appSavePrefs: function ( callback ) {
 
         request({
             method: 'POST',
@@ -305,6 +257,8 @@ module.exports = {
     },
 
 
+
+
     /**
      * Update Tickers
      *
@@ -312,7 +266,7 @@ module.exports = {
      */
 
 
-    appUpdateTickers: function (callback) {
+    appUpdateTickers: function ( callback ) {
 
         request({
             method: 'POST',
@@ -331,6 +285,9 @@ module.exports = {
     },
 
 
+
+
+
     /**
      * List Order Types
      *
@@ -340,7 +297,7 @@ module.exports = {
 
 
 
-    appOrderTypes: function (callback) {
+    appOrderTypes: function ( callback ) {
 
         request({
             method: 'POST',
@@ -358,6 +315,7 @@ module.exports = {
     },
 
 
+
     /**
      * Refresh Balance
      *
@@ -369,7 +327,7 @@ module.exports = {
 
 
 
-    appRefreshBalance: function (callback) {
+    appRefreshBalance: function ( callback ) {
 
         request({
             method: 'POST',
@@ -388,6 +346,7 @@ module.exports = {
     },
 
 
+
     /**
      * Add Alert
      *
@@ -397,7 +356,7 @@ module.exports = {
 
 
 
-    appAddAlert: function (callback) {
+    appAddAlert: function ( callback ) {
 
         request({
             method: 'POST',
@@ -423,7 +382,7 @@ module.exports = {
      */
 
 
-    appDeleteAlert: function (callback) {
+    appDeleteAlert: function ( callback ) {
 
         request({
             method: 'POST',
@@ -442,6 +401,7 @@ module.exports = {
     },
 
 
+
     /**
      * Add Order
      *
@@ -451,7 +411,7 @@ module.exports = {
 
 
 
-    appAddOrder: function (callback) {
+    appAddOrder: function ( callback ) {
 
         request({
             method: 'POST',
@@ -478,7 +438,7 @@ module.exports = {
 
 
 
-    appCancelOrder: function (callback) {
+    appCancelOrder: function ( callback ) {
 
         request({
             method: 'POST',
@@ -497,6 +457,9 @@ module.exports = {
     },
 
 
+
+
+
 //********************************************************************************************************
 
     /**
@@ -508,6 +471,10 @@ module.exports = {
 //********************************************************************************************************
 
 
+
+
+
+
     /**
      * List Exchanges
      *
@@ -516,7 +483,7 @@ module.exports = {
 
 
 
-    appListExchanges: function (callback) {
+    appListExchanges: function ( callback ) {
 
         request({
             method: 'POST',
@@ -534,6 +501,12 @@ module.exports = {
     },
 
 
+
+
+
+
+
+
     /**
      * List Markets
      *
@@ -542,7 +515,7 @@ module.exports = {
 
 
 
-    appListMarkets: function (callback) {
+    appListMarkets: function ( callback ) {
 
         request({
             method: 'POST',
@@ -561,6 +534,11 @@ module.exports = {
     },
 
 
+
+
+
+
+
 //********************************************************************************************************
 
     /**
@@ -572,6 +550,10 @@ module.exports = {
 //********************************************************************************************************
 
 
+
+
+
+
     /**
      * data {type:history}
      *
@@ -580,7 +562,7 @@ module.exports = {
 
 
 
-    appDataHistory: function (callback) {
+    appDataHistory: function ( callback ) {
 
         request({
             method: 'POST',
@@ -599,6 +581,9 @@ module.exports = {
     },
 
 
+
+
+
     /**
      * data {type:asks}
      *
@@ -606,7 +591,7 @@ module.exports = {
 
 
 
-    appDataAsk: function (callback) {
+    appDataAsk: function ( callback ) {
 
         request({
             method: 'POST',
@@ -625,6 +610,9 @@ module.exports = {
     },
 
 
+
+
+
     /**
      * data {type:bids}
      *
@@ -633,7 +621,7 @@ module.exports = {
 
 
 
-    appDataBids: function (callback) {
+    appDataBids: function ( callback ) {
 
         request({
             method: 'POST',
@@ -652,6 +640,8 @@ module.exports = {
     },
 
 
+
+
     /**
      * data {type:orders}
      *
@@ -660,7 +650,7 @@ module.exports = {
 
 
 
-    appDataOrders: function (callback) {
+    appDataOrders: function ( callback ) {
 
         request({
             method: 'POST',
@@ -679,6 +669,8 @@ module.exports = {
     },
 
 
+
+
     /**
      * data {type:all}
      *
@@ -689,7 +681,7 @@ module.exports = {
 
 
 
-    appDataAll: function (callback) {
+    appDataAll: function ( callback ) {
 
         request({
             method: 'POST',
@@ -708,6 +700,11 @@ module.exports = {
     },
 
 
+
+
+
+
+
     /**
      * Price Ticker
      *
@@ -717,7 +714,7 @@ module.exports = {
 
 
 
-    appDataTicker: function (callback) {
+    appDataTicker: function ( callback ) {
 
         request({
             method: 'POST',
@@ -734,6 +731,7 @@ module.exports = {
 
         });
     }
+
 
 
 };
