@@ -1,11 +1,6 @@
 $(document).ready(function () {
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
     $('.coin').click(function () {
-
         var coin = $('.coin').val();
         var quantities = $('#amount').val().trim();
         var name = $('option').attr('class');
@@ -26,7 +21,6 @@ $(document).ready(function () {
         console.log(check + ' adad ')
     });
 
-
     $('#amount').keyup(function () {
 
         var coin = $('.coin').val();
@@ -36,5 +30,5 @@ $(document).ready(function () {
 
         var val = total.toLocaleString();
         $('#total').attr('placeholder', val);
-    });
+    })
 });
