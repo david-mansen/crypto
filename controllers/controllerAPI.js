@@ -367,7 +367,7 @@ module.exports = function(app, passport){
 
             });
 
-        }, 3000);
+        }, 4000);
 
     });
 
