@@ -136,22 +136,40 @@ module.exports = function (app, passport) {
                 amount: 10000000
             }];
 
-
         res.render("trade", {
             userCoins: userCoins,
             user: req.user
         });
     });
 
-    app.get('/trade/buycoin', function (req, res) {
+    app.post('/someUrl', function(req, res) {
+        req.flash('info', 'Hello there!');
+        req.flash('error', "OH NOES!!!11");
+        res.redirect('back');
+    });
 
-        var bitcoinprice = 3500;
+    app.post('/trade/buycoin', function (req, res) {
 
+        var coinprice = req.body.coins;
 
+        req.flash('success', 'No enough money on your Wallet! Please add !');
 
-
-
-
+        User.findOne({_id: userID}, function (err, user, done) {
+            var old = user.local.USD;
+            if (old > coinprice) {
+                var total = old - coinprice;
+                user.local.USD = total;
+                user.save(function (err) {
+                    if (err) {
+                        console.error('ERROR!');
+                    }
+                    res.redirect('/trade');
+                });
+            } else if (old < coinprice) {
+                res.render('profile', {tradebuycoin: req.flash('success'),
+                    user : req.user});
+            }
+        })
     });
 
         //logout
