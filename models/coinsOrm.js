@@ -48,9 +48,7 @@ module.exports = {
                 },
                 body: "{  \"show_nils\": 0,  \"auth_ids\": \"\"}"
             }, function (error, response, body) {
-
                 callback(body);
-
             });
     },
 
@@ -165,7 +163,6 @@ module.exports = {
      *
      * Returns a list of the latest items from Coinigy's newsfeed sources
      */
-
 
 
     appNewsFeed: function ( callback ) {

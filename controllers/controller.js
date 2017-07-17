@@ -157,13 +157,27 @@ module.exports = function (app, passport) {
         res.sendFile(path.join(__dirname + "/../db/database.json"))
     });
 
+    app.get('/livedata', isLoggedIn, function(req,res){
+        var temp = {
+            time: "blah",
+            price: 100
+        };
+
+        res.send(JSON.stringify(temp));
+    });
+
 };
+
 
 function isLoggedIn(req, res, next) {
     //if authenticated
     if (req.isAuthenticated()) return next();
 
     res.redirect('/');
+}
+
+function generateGraph(){
+
 }
 
 // var express = require("express");
