@@ -1,17 +1,44 @@
 $(document).ready(function () {
 
-    $('#amount').keyup(function () {
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    $('.coin').click(function () {
+
+        var coin = $('.coin').val();
+        var quantities = $('#amount').val().trim();
+        var name = $('option').attr('class');
+        var check = $('#checkbox').attr('value');
+
+        var total = coin * quantities;
+
+        console.log(name)
+
+        var val = total.toLocaleString();
+        $('#total').attr('placeholder', val);
+
+        if (name === 'Bitcoin (BTC)') {
+            $('#checkbox').attr('value', 'Bitcoin (BTC)');
+        } else if (name === 'Ethereum (ETH) ') {
+            $('#checkbox').attr('value', 'Ethereum (ETH)');
+        }
+        console.log(check + ' adad ')
+    });
+  
+  $('#amount').keyup(function () {
 
         var coin = $('.coin').val();
         var quantities = $('#amount').val().trim();
 
         var total = coin * quantities;
 
-        $('#total').attr('placeholder', total);
+        var val = total.toLocaleString();
+        $('#total').attr('placeholder', val);
     });
-});
 
-// getData: function () {
+  
+  // getData: function () {
 //     app.get("/Orders", function (req, res) {
 
 //         request({
@@ -25,3 +52,7 @@ $(document).ready(function () {
 //         });
 //     })
 // }
+
+    
+});
+

@@ -28,7 +28,7 @@
             {{#each marketCoins}}
                 <div id="{{this.name}}Button" class="coinButton">
                     <p>{{this.name}}</p>
-                    <span id="{{this.name}}Label" class="badge">{{this.value}}</span>
+                    <span data-value="{{this.value}}"id="{{this.name}}Label" class="badge">{{this.value}}</span>
                 </div>
             {{/each}}
         </div>
