@@ -61,9 +61,34 @@ app.use(express.static("public"));
 //app.use(methodOverride("_method"));
 
 
+//=======================
+//var LIMIT = 400;
+//var SOCKET_COUNT = 0;
+//=======================
+/**
+ * This is the websocket logging every 400th data point
+ */
+// var Gdax = require('gdax');
+// var websocket = new Gdax.WebsocketClient(['BTC-USD', 'ETH-USD']);
+// websocket.on('message', function (data) {
+//     if (SOCKET_COUNT !== LIMIT) {
+//         SOCKET_COUNT++;
+//         return;
+//     } else {
+//         //Do logic with data [log(data)]
+//         console.log(data);
+//         SOCKET_COUNT = 0;
+//         return;
+//     }
+// });
+
+
+
 
 // Import routes and give the server access to them.
 var routes = require("./controllers/controller.js")(app, passport);
+var APIroutes = require("./controllers/controllerAPI.js")(app, passport);
+
 
 //app.use("/", routes);
 
@@ -72,29 +97,6 @@ app.listen(port, function (req) {
 });
 
 
-
-
-
-
-
-
-
-
-
-    var request = require('request');
-    request({
-        method: 'POST',
-        url: 'https://private-eb3c42-coinigy.apiary-mock.com/api/v1/accounts',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
-            'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
-        }
-    }, function (error, response, body) {
-        console.log('Status:', response.statusCode);
-        console.log('Headers:', JSON.stringify(response.headers));
-        console.log('Response:', body);
-
         //res.render('Status:', response.statusCode);
         //res.render('Headers:', JSON.stringify(response.headers));
         //res.render('Response:', body);
@@ -102,19 +104,3 @@ app.listen(port, function (req) {
 
 
 
-// var request = require('request');
-//
-// request({
-//     method: 'POST',
-//     url: 'https://private-eb3c42-coinigy.apiary-mock.com/api/v1/ticker',
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
-//         'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
-//     },
-//     body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"BTC/USD\"}"
-// }, function (error, response, body) {
-//     console.log('Status:', response.statusCode);
-//     console.log('Headers:', JSON.stringify(response.headers));
-//     console.log('Response:', body);
-// });

@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/david-mansen/crypto.git"
   },
-  "author": "",
+  "author": "name",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/david-mansen/crypto/issues"
@@ -28,13 +28,15 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.3",
     "gdax": "^0.4.2",
+    "jasmine": "^2.6.0",
     "method-override": "^2.3.9",
-    "mongoose": "^4.11.1",
+    "mongoose": "^4.11.3",
     "morgan": "^1.8.2",
     "mysql": "^2.13.0",
     "nightmare": "^2.10.0",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
+    "passport-local": "^1.0.0",  
+    "run-parallel": "^1.1.6",
     "path": "^0.12.7",
     "request": "^2.81.0"
   }
