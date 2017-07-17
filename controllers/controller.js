@@ -213,14 +213,8 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.post('/someUrl', function(req, res) {
-        req.flash('info', 'Hello there!');
-        req.flash('error', "OH NOES!!!11");
-        res.redirect('back');
-    });
 
     app.post('/trade/buycoin', function (req, res) {
-
 
         var coinprice = req.body.coins;
         var howmany = req.body.quantities;

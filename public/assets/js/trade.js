@@ -1,11 +1,6 @@
 $(document).ready(function () {
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
     $('.coin').click(function () {
-
         var coin = $('.coin').val();
         var quantities = $('#amount').val().trim();
         var name = $('option').attr('class');
@@ -25,8 +20,8 @@ $(document).ready(function () {
         }
         console.log(check + ' adad ')
     });
-  
-  $('#amount').keyup(function () {
+
+    $('#amount').keyup(function () {
 
         var coin = $('.coin').val();
         var quantities = $('#amount').val().trim();
@@ -35,10 +30,12 @@ $(document).ready(function () {
 
         var val = total.toLocaleString();
         $('#total').attr('placeholder', val);
-    });
 
-  
-  // getData: function () {
+    })
+});
+
+
+// getData: function () {
 //     app.get("/Orders", function (req, res) {
 
 //         request({
@@ -53,6 +50,4 @@ $(document).ready(function () {
 //     })
 // }
 
-    
-});
 

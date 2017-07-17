@@ -9,7 +9,7 @@
             </div>
 
             <div class="modal-body">
-                <form class="form-horizontal" action="/" method="post">
+                <form class="form-horizontal" action="/trade/buycoin" method="post">
 
                     <div class="form-group">
                         <div class="input-group" style="margin: 0 20px 0 20px;">
@@ -20,10 +20,13 @@
                     </div>
                     <hr>
                     <h4>Currency to BET</h4>
-                    <select class="form-control">
-                        <option>Bitcoin</option>
-                        <option>Etherium</option>
+
+                    <select class="form-control coin" name="coins">
+                        {{#each marketCoins}}
+                        <option value="{{this.value}}" class="{{this.name}}">{{this.name}}</option>
+                    {{/each}}
                     </select>
+
                     <hr>
                     <h4>Quantities</h4>
                     <div class="form-group" style="margin: 0 5px 0 5px">
@@ -33,14 +36,13 @@
                     <hr>
                     <h4>Total $</h4>
                     <div class="input-group">
-                        <div class="input-group-addon">$</div>
+                        <div class="input-group-addon">$ usd</div>
                         <input type="text" class="form-control" id="total" placeholder="Amount">
-                        <div class="input-group-addon">.00</div>
                     </div>
 
                     <hr>
 
-                    <button type="submit" class="btn btn-primary">BUY currency</button>
+                    <button type="submit" class="btn btn-primary">BET currency</button>
 
                 </form>
             </div>
