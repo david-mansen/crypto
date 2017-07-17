@@ -156,10 +156,10 @@ module.exports = function (app, passport) {
 
          var marketCoins = [
             {
-                name: "BTC",
+                name: "Bitcoin (BTC)",
                 value: 0
             },{
-                name: "ETH",
+                name: "Ethereum (ETH)",
                 value: 0
             }];
 
@@ -209,9 +209,6 @@ module.exports = function (app, passport) {
                         user: req.user
                     });
                 });
-                
-                
-                
             });
         });
     });
@@ -224,11 +221,20 @@ module.exports = function (app, passport) {
 
     app.post('/trade/buycoin', function (req, res) {
 
+
         var coinprice = req.body.coins;
+        var howmany = req.body.quantities;
+        var currency = req.body.crypto;
+
+        console.log(currency + ' rs ==================>> ' + howmany);
 
         req.flash('success', 'No enough money on your Wallet! Please add !');
 
         User.findOne({_id: userID}, function (err, user, done) {
+
+
+
+
             var old = user.local.USD;
             if (old > coinprice || old == coinprice) {
                 var total = old - coinprice;
