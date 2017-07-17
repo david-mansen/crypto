@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var User = require("../models/user.js");
 var path = require('path');
 var userID = 0;
+var request = require("request");
+
 
 module.exports = function (app, passport) {
 
@@ -44,6 +46,7 @@ module.exports = function (app, passport) {
 //show trade page
 
     app.get('/transactions', isLoggedIn, function(req,res){
+
         var userCoins = [
             {
                 name:   "USD",
@@ -133,16 +136,49 @@ module.exports = function (app, passport) {
             }, {
                 name: "Ethereum",
                 amount: 0.111
-            },
-            {
-                name: "AntShares",
-                amount: 10000000
             }];
 
+         var marketCoins = [
+            {
+                name: "BTC",
+                value: 0
+            },{
+                name: "ETH",
+                value: 0
+            }];
 
-        res.render("trade", {
-            userCoins: userCoins,
-            user: req.user
+        request({
+            method: 'POST',
+            url: 'https://api.coinigy.com/api/v1/ticker',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+        },
+        body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"BTC/USD\"}"
+        }, function (error, response, body) {
+            var temp = JSON.parse(body);
+            marketCoins[0].value = parseFloat(temp.data[0].last_trade).toFixed(2);
+
+            request({
+                method: 'POST',
+                url: 'https://api.coinigy.com/api/v1/ticker',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                    'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+            },
+            body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"ETH/USD\"}"
+            }, function (error, response, body) {
+                var temp = JSON.parse(body);
+                marketCoins[1].value = parseFloat(temp.data[0].last_trade).toFixed(2);
+                
+                res.render("trade", {
+                    marketCoins: marketCoins,
+                    userCoins: userCoins,
+                    user: req.user
+                });
+            });
         });
     });
 
