@@ -12,11 +12,10 @@
                 <form class="form-horizontal" action="/" method="post">
 
                     <div class="form-group">
-                        <label class="sr-only" for="wallet">Amount (in dollars)</label>
                         <div class="input-group" style="margin: 0 20px 0 20px;">
-                            <div class="input-group-addon">Current $$$ on your WALLET</div>
-                            <input type="text" class="form-control" id="wallet" placeholder="00000000" readonly>
-                            <div class="input-group-addon">.00</div>
+                            <div class="input-group-addon">Current money in your WALLET</div>
+                            <input type="text" class="form-control" id="wallet" readonly placeholder={{this.user.local.USD}}>
+                            <div class="input-group-addon">$</div>
                         </div>
                     </div>
                     <hr>

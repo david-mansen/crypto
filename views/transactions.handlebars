@@ -1,179 +1,139 @@
-{{> signedInHeader}}
-
+{{> signedInHeader parentName="transactionsPage"}}
 
 <div class="container">
-    <br>
-    <br>
+  <div class="row">
+    <div class="col-md-12 coinPanel">
+      <ul class="userCoins">
+        {{!--<i class="fa fa-btc"></i>--}} {{#each userCoins}}
+        <li style="border-right: 1px solid gray; padding-left: 15px; padding-right: 15px; margin: 0">
+          {{this.name}} {{this.amount}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-    <div class="jumbotron trade">
-        <h1>Transaction History</h1>
-    </div>
-</div>
+  <div class="row">
 
-<div class="container">
-    <div class="col-md-12">
-        <span class="thumbnail">
-            <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <p>...</p>
+    <div class="marketPanel panel panel-default list-group col-md-2">
+      <div id="buyTableButton" class="coinButton" isActive="true">
+        <p>Buy History</p>
+      </div>
+      <div id="sellTableButton" class="coinButton">
+        <p>Sell History</p>
+      </div>
+      <div id="betTableButton" class="coinButton">
+        <p>Bet History</p>
+      </div>
+    </div>
+
+    <div class="graphPanel panel panel-default col-md-10" style="margin:0; padding:0">
+
+      <table id="buyTable" class="table" style="color:white;">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>USD Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1/1/2009 11:23:02</td>
+            <td>Bitcoin</td>
+            <td>1.042</td>
+            <td>120</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table id="sellTable" class="table table-inverse" style="color:white; display:none">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>USD Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1/1/2009 11:23:02</td>
+            <td>Bitcoin</td>
+            <td>1.042</td>
+            <td>120</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table id="betTable" class="table" style="color:white; display:none;">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Currency</th>
+            <th>Amount</th>
+            <th>Time Due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Put</td>
+            <td>Bitcoin</td>
+            <td>1.042</td>
+            <td>23HR</td>
+          </tr>
+          <tr>
+            <td>Call</td>
+            <td>Bitcoin</td>
+            <td>1.042</td>
+            <td>23HR</td>
+          </tr>
+          <tr>
+            <td>Put</td>
+            <td>Antshares</td>
+            <td>1.042</td>
+            <td>23HR</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
-             <table class="table table-striped" id="activeBets">
-<tr>
-    <th>Active Bets</th>
-    <th>C</th>
-    <th>C</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-</table>
-                </table>
-        </span>
-    </div>
-
-    <div class="col-md-12">
-        <br>
-    </div>
-
-    <div class="col-md-6">
-                <span class="thumbnail">
-
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <p>...</p>
-  </div>
-
-                    <table class="table table-striped" id="transactionsHistory">
-                        <tr>
-    <th>Transaction history</th>
-    <th>C</th>
-    <th>C</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-                        <tr>
-                    <td>HELP ME</td>
-                      <td>HELP ME</td>
-                      <td>HELP ME</td>
-                 </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-</table>
-                    </table>
-                </span>
-    </div>
-
-    <div class="col-md-6">
-                <span class="thumbnail">
-
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <p>...</p>
-  </div>
-                    <table class="table table-striped" id="activeBets">
-                        <tr>
-    <th>Bet History</th>
-    <th>C</th>
-    <th>C</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-</table>
-                    </table>
-                </span>
-
-    </div>
-
-</div>
-<div style="color:black;" class="last">
 </div>
 
 <script>
-    window.document.getElementById("transactionsTab").className = "active";
+  $("#buyTableButton").click(function(){
+    $("#buyTableButton").attr("isActive","true");
+    $("#sellTableButton").attr("isActive","false");
+    $("#betTableButton").attr("isActive","false");
+
+    $("#sellTable").hide();
+    $("#betTable").hide();
+    $("#buyTable").show();
+  });
+
+  $("#sellTableButton").on("click", function(){
+    $("#buyTableButton").attr("isActive","false");
+    $("#sellTableButton").attr("isActive","true");
+    $("#betTableButton").attr("isActive","false");
+    
+    $("#buyTable").hide();
+    $("#betTable").hide();
+    $("#sellTable").show();
+  });
+
+  $("#betTableButton").on("click", function(){
+    $("#buyTableButton").attr("isActive","false");
+    $("#sellTableButton").attr("isActive","false");
+    $("#betTableButton").attr("isActive","true");
+
+    $("#buyTable").hide();
+    $("#sellTable").hide();
+    $("#betTable").show();
+  });
+  
+  window.document.getElementById("transactionsTab").className = "active";
 </script>

@@ -1,3 +1,4 @@
+//server.js
 //Set up for tools
 var express     = require("express");
 var app         = express();
@@ -54,6 +55,7 @@ app.use(express.static("public"));
 //app.use(methodOverride("_method"));
 
 
+
 /**
  * This is the websocket logging every 400th data point
  */
@@ -80,10 +82,11 @@ app.use(express.static("public"));
 
 
 
+
 // Import routes and give the server access to them.
 var routes = require("./controllers/controller.js")(app, passport);
+var APIroutes = require("./controllers/controllerAPI.js")(app, passport);
 
-var routes = require("./controllers/controllerAPI.js")(app, passport);
 
 //app.use("/", routes);
 
@@ -91,6 +94,10 @@ app.listen(port, function (req) {
     console.log("listening on port", port);
 });
 
+
+        //res.render('Status:', response.statusCode);
+        //res.render('Headers:', JSON.stringify(response.headers));
+        //res.render('Response:', body)
 
 
 

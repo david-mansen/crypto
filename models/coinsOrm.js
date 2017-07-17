@@ -24,9 +24,7 @@ module.exports = {
             }
 
         }, function (err, response, body) {
-
             callback(body);
-
         });
 
     },

@@ -1,24 +1,8 @@
 
-$('form').on('submit', function (e) {
-    e.preventDefault();
 
-    var fname = $('#fname').val().trim();
-    var lname = $('#lname').val().trim();
-
-    var updated = {
-        name: fname,
-        lname: lname
-    };
-
-    $.post('/', updated)
-        .done(function (data) {
-            console.log(updated);
-
-            $('.username').html(updated.name + ' ' + updated.lname)
-
-
-        })
-});
+function reload() {
+    location.reload();
+}
 
 function previewProfileImage( uploader ) {
     //ensure a file was selected
