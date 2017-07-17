@@ -1,9 +1,4 @@
 //server.js
-
-
-var port = process.env.PORT || 3000;
-
-
 //Set up for tools
 var express     = require("express");
 var app         = express();
@@ -11,7 +6,6 @@ var port        = process.env.PORT || 3000;
 var mongoose    = require("mongoose");
 var passport    = require("passport");
 var flash       = require("connect-flash");
-
 var morgan          = require("morgan");
 var cookieParser    = require("cookie-parser");
 var bodyParser      = require("body-parser");
@@ -61,13 +55,17 @@ app.use(express.static("public"));
 //app.use(methodOverride("_method"));
 
 
-//=======================
-//var LIMIT = 400;
-//var SOCKET_COUNT = 0;
-//=======================
+
 /**
  * This is the websocket logging every 400th data point
  */
+
+
+// //=======================
+// var LIMIT = 400;
+// var SOCKET_COUNT = 0;
+// //=======================
+
 // var Gdax = require('gdax');
 // var websocket = new Gdax.WebsocketClient(['BTC-USD', 'ETH-USD']);
 // websocket.on('message', function (data) {

@@ -273,6 +273,21 @@ module.exports = function(app, passport){
             appDataTickerData = data;
         });
 
+
+
+
+        /**
+         * Add API Key
+         *
+         * Add a new Exchange API Key to your account. Returns newly-generated auth_id in "data" block. After adding
+         * a new key, it must still be both activated (/activateApiKey) and activated for trading (/activateTradingKey).
+         */
+        var appAddAPIKeyData = {};
+        orm.appAddAPIKey( function myCallback(data) {
+            appAddAPIKeyData = data;
+        });
+
+
         setTimeout(function () {
 
             //console.log(appDataTickerData);
@@ -363,7 +378,10 @@ module.exports = function(app, passport){
                 DataTicker : appDataTickerData,
 
                 // {{{market}}}
-                market : market
+                market : market,
+
+                // {{{AddAPIKey}}}
+                AddAPIKey : appAddAlertData
 
             });
 
