@@ -65,6 +65,12 @@ module.exports = function(passport) {
                         newUser.local.email    = email;
                         newUser.local.password = newUser.generateHash(password);
                         newUser.local.USD = 10000;
+                        newUser.local.BTC = 0.0;
+                        newUser.local.ETH = 0.0;
+                        newUser.local.username = "Username Not Set";
+                        newUser.local.name = "Name not Set";
+                        newUser.local.lastname = "Name not Set";
+                        newUser.local.picture = "http://i.imgur.com/KhTmHhM.png";
 
                         // save the user
                         newUser.save(function(err) {

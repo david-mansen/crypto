@@ -20,25 +20,17 @@
 <div class="container">
     <div class="row">
 
-        <div class="marketPanel panel panel-default list-group col-md-3">
-            <div class="coinButton">
-                <i class="fa fa-btc"></i>
-                <p>Bitcoin</p>
-                <span class="badge">Currency price</span>
-            </div>
-            <div class="coinButton">
-                <i class="fa fa-btc"></i>
-                <p>Ethereum</p>
-                <span class="badge">Currency price</span>
-            </div>
-            <div class="coinButton">
-                <i class="fa fa-btc"></i>
-                <p>Litecoin</p>
-                <span class="badge">Currency price</span>
-            </div>
+        <div class="marketPanel panel panel-default list-group col-md-2">
+            
+            {{#each marketCoins}}
+                <div class="coinButton">
+                    <p>{{this.name}}</p>
+                    <span class="badge">{{this.value}}</span>
+                </div>
+            {{/each}}
         </div>
 
-        <div class="graphPanel panel panel-default col-md-9">
+        <div class="graphPanel panel panel-default col-md-10">
             <div class="row">
                 <div class="col-md-12" id="chartContainer" style="width: 100%; padding:0">
                     {{> graph}}
@@ -70,5 +62,8 @@
 
 <script>
     window.document.getElementById("tradeTab").className = "active";
+
+    
+    
 </script>
 

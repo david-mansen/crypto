@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var User = require("../models/user.js");
 var path = require('path');
 var userID = 0;
+var request = require("request");
+
 
 module.exports = function (app, passport) {
 
@@ -41,27 +43,47 @@ module.exports = function (app, passport) {
 //show trade page
 
     app.get('/transactions', isLoggedIn, function(req,res){
+
         var userCoins = [
             {
-                name:   "USD",
-                amount: 1200
+                name: "USD",
+                amount: 0
             },
             {
-                name:   "Bitcoin",
-                amount: 0.2323
-            },{
-                name:   "Ethereum",
-                amount: 0.111
-            },
-            {
-                name:   "AntShares",
-                amount: 10000000
+                name: "BTC",
+                amount: 0
+            }, {
+                name: "ETH",
+                amount: 0
             }];
 
+        var marketCoins = [
+            {
+                name: "BTC",
+                value: 0
+            },{
+                name: "ETH",
+                value: 0
+            }];
 
-        res.render("transactions", {
-            userCoins: userCoins,
-            user: req.user
+        User.findOne({_id: userID}, function (err, user) {
+            console.log(user);
+            userCoins[0].amount = user.local.USD;
+            userCoins[1].amount = user.local.BTC;
+            userCoins[2].amount = user.local.ETH;
+
+            var userInfo = {
+                userName: user.local.username,
+                firstName: user.local.name,
+                lastName: user.local.lastname,
+                pictureURL: user.local.picture
+            };
+            console.log("eth",user.ETH);
+
+            res.render("transactions", {
+                userCoins: userCoins,
+                user: req.user
+            });
         });
     });
 
@@ -122,23 +144,75 @@ module.exports = function (app, passport) {
         var userCoins = [
             {
                 name: "USD",
-                amount: 1200
+                amount: 0
             },
             {
-                name: "Bitcoin",
-                amount: 0.2323
+                name: "BTC",
+                amount: 0
             }, {
-                name: "Ethereum",
-                amount: 0.111
-            },
-            {
-                name: "AntShares",
-                amount: 10000000
+                name: "ETH",
+                amount: 0
             }];
 
-        res.render("trade", {
-            userCoins: userCoins,
-            user: req.user
+         var marketCoins = [
+            {
+                name: "BTC",
+                value: 0
+            },{
+                name: "ETH",
+                value: 0
+            }];
+
+        request({
+            method: 'POST',
+            url: 'https://api.coinigy.com/api/v1/ticker',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+        },
+        body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"BTC/USD\"}"
+        }, function (error, response, body) {
+            var temp = JSON.parse(body);
+            marketCoins[0].value = parseFloat(temp.data[0].last_trade).toFixed(2);
+
+            request({
+                method: 'POST',
+                url: 'https://api.coinigy.com/api/v1/ticker',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                    'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+            },
+            body: "{  \"exchange_code\": \"GDAX\",  \"exchange_market\": \"ETH/USD\"}"
+            }, function (error, response, body) {
+                var temp = JSON.parse(body);
+                marketCoins[1].value = parseFloat(temp.data[0].last_trade).toFixed(2);
+
+                User.findOne({_id: userID}, function (err, user) {
+                    console.log(user);
+                    userCoins[0].amount = user.local.USD;
+                    userCoins[1].amount = user.local.BTC;
+                    userCoins[2].amount = user.local.ETH;
+
+                    var userInfo = {
+                        userName: user.local.username,
+                        firstName: user.local.name,
+                        lastName: user.local.lastname,
+                        pictureURL: user.local.picture
+                    };
+                    console.log("eth",user.ETH);
+
+                    res.render("trade", {
+                        marketCoins: marketCoins,
+                        userCoins: userCoins,
+                        user: req.user
+                    });
+                });
+                
+                
+                
+            });
         });
     });
 
@@ -183,13 +257,27 @@ module.exports = function (app, passport) {
         res.sendFile(path.join(__dirname + "/../db/database.json"))
     });
 
+    app.get('/livedata', isLoggedIn, function(req,res){
+        var temp = {
+            time: "blah",
+            price: 100
+        };
+
+        res.send(JSON.stringify(temp));
+    });
+
 };
+
 
 function isLoggedIn(req, res, next) {
     //if authenticated
     if (req.isAuthenticated()) return next();
 
     res.redirect('/');
+}
+
+function generateGraph(){
+
 }
 
 // var express = require("express");
