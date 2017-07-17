@@ -90,17 +90,19 @@ module.exports = function(app, passport){
         var usernamefull = req.body.fname + req.body.lname;
         var nameuser = req.body.fname;
         var lastnuser = req.body.lname;
+        var pic = req.body.pictureuser;
 
         User.findOne({_id: userID}, function (err, user) {
             user.local.name = nameuser;
             user.local.lastName = lastnuser;
             user.local.username = usernamefull;
+            user.local.picture = pic;
             user.save(function (err) {
                 if (err) {
                     console.error('ERROR!');
                 }
                 res.render("profile", {
-                    user: req.user
+                    user: user
                 });
             });
         });
@@ -122,7 +124,7 @@ module.exports = function(app, passport){
                     console.error('ERROR!');
                 }
                 res.render("profile", {
-                    user: req.user
+                    user: user
                 });
             });
         });

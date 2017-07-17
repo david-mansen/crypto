@@ -1,10 +1,8 @@
 
 
 function reload() {
-    $(document).reload(true);
+    location.reload();
 }
-
-reload()
 
 function previewProfileImage( uploader ) {
     //ensure a file was selected

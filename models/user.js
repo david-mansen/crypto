@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
         USD         : Number,
         username    : String,
         name        : String,
-        lastName    : String
+        lastName    : String,
+        picture     : String
     }
 });
 
