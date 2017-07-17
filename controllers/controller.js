@@ -88,9 +88,7 @@ module.exports = function(app, passport){
                 if (err) {
                     console.error('ERROR!');
                 }
-                res.render("profile", {
-                    user: user
-                });
+                res.redirect('/profile');
             });
         });
     });
@@ -110,9 +108,7 @@ module.exports = function(app, passport){
                 if (err) {
                     console.error('ERROR!');
                 }
-                res.render("profile", {
-                    user: user
-                });
+                res.redirect('/profile');
             });
         });
     });
