@@ -275,7 +275,7 @@ module.exports = function(app, passport){
 
         setTimeout(function () {
 
-            console.log(appDataTickerData);
+            //console.log(appDataTickerData);
 
             var tickerData = JSON.parse(appDataTickerData)[0];
 
@@ -283,7 +283,7 @@ module.exports = function(app, passport){
 
             var market = moreData.market;
 
-            console.log(moreData.market);
+            //console.log(moreData.market);
 
             //var market = appDataTickerData.data[0].market;
             //console.log(appDataTickerData);
@@ -420,9 +420,9 @@ module.exports = function(app, passport){
     });
 
     app.post('/profile', function (req,res) {
-        console.log(req.body.email + '  ' +  req.body.pwd);
-        console.log(req.body.fname + '  ' +  req.body.lname);
-        console.log(req.body.avatar-2);
+        // console.log(req.body.email + '  ' +  req.body.pwd);
+        // console.log(req.body.fname + '  ' +  req.body.lname);
+        // console.log(req.body.avatar-2);
 
         res.render("profile");
     });
