@@ -8,9 +8,12 @@ nightmare
     .type('.form-control', 'test@test.com')
     .type('div [name="password"]', 'test')
     .click('div [type="submit"]')
-    .click('div [href="/trade"]')
+    .wait(5000)
+    .click('div [href="/profile"]')
+    .wait(5000)
+    .click('div [href="/logout"]')
+    .wait(3000)
 
-    .wait()
     .evaluate(function () {
         return document.querySelector('#zero_click_wrapper .c-info__title a').href;
     })

@@ -143,7 +143,18 @@ module.exports = function (app, passport) {
         });
     });
 
-    //logout
+    app.get('/trade/buycoin', function (req, res) {
+
+        var bitcoinprice = 3500;
+
+
+
+
+
+
+    });
+
+        //logout
     app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
