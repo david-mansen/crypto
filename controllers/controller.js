@@ -89,7 +89,7 @@ module.exports = function(app, passport){
                     console.error('ERROR!');
                 }
                 res.render("profile", {
-                    user: req.user
+                    user: user
                 });
             });
         });
@@ -111,7 +111,7 @@ module.exports = function(app, passport){
                     console.error('ERROR!');
                 }
                 res.render("profile", {
-                    user: req.user
+                    user: user
                 });
             });
         });
