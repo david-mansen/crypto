@@ -6,8 +6,16 @@ body {
     padding-top: 0;
 }
 
-.container{
-    padding: 0 10px 0 10px;
+.signinbox {
+    margin-top: 100px;
+}
+
+.jumbomain {
+    color: white;
+}
+
+.signin {
+    margin-top: 60px;
 }
 
 .coinPanel{
@@ -91,7 +99,7 @@ table {
 }
 
 #box1forever {
-    margin-top: 130px;
+    margin-top: 70px;
 }
 
 /* White Space down box1*/
