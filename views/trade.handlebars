@@ -21,21 +21,13 @@
     <div class="row">
 
         <div class="marketPanel panel panel-default list-group col-md-2">
-            <div class="coinButton">
-                <i class="fa fa-btc"></i>
-                <p>Bitcoin</p>
-                <span class="badge">Currency price</span>
-            </div>
-            <div class="coinButton">
-                <i class="fa fa-btc"></i>
-                <p>Ethereum</p>
-                <span class="badge">Currency price</span>
-            </div>
-            <div class="coinButton">
-                <i class="fa fa-btc"></i>
-                <p>Litecoin</p>
-                <span class="badge">Currency price</span>
-            </div>
+            
+            {{#each marketCoins}}
+                <div class="coinButton">
+                    <p>{{this.name}}</p>
+                    <span class="badge">{{this.value}}</span>
+                </div>
+            {{/each}}
         </div>
 
         <div class="graphPanel panel panel-default col-md-10">
