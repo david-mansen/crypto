@@ -730,7 +730,40 @@ module.exports = {
             callback(body);
 
         });
+    },
+
+
+
+
+    /**
+     * Add API Key
+     *
+     * Add a new Exchange API Key to your account. Returns newly-generated auth_id in "data" block. After adding
+     * a new key, it must still be both activated (/activateApiKey) and activated for trading (/activateTradingKey).
+     */
+
+
+
+    appAddAPIKey: function ( callback ) {
+
+        request({
+            method: 'POST',
+            url: 'https://private-eb3c42-coinigy.apiary-mock.com/api/v1/addAlert',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-API-KEY': '521067f8f47ebe8aaf96bb3e2b7a3d38',
+                'X-API-SECRET': '8cfc0cbcdb10ec968a59ab3a9cb16e9b'
+            },
+            body: "{  \"exch_code\": \"GDAX\",  \"market_name\": \"BTC/USD\",  \"alert_price\": 750.01,  \"alert_note\": \"This is an optional message\"}"
+        }, function (error, response, body) {
+
+            callback(body);
+
+        });
     }
+
+
+
 
 
 
