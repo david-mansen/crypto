@@ -125,14 +125,14 @@ module.exports = function (app, passport) {
         var userCoins = [
             {
                 name: "USD",
-                amount: 1200
+                amount: 0
             },
             {
-                name: "Bitcoin",
-                amount: 0.2323
+                name: "BTC",
+                amount: 0
             }, {
-                name: "Ethereum",
-                amount: 0.111
+                name: "ETH",
+                amount: 0
             }];
 
          var marketCoins = [
@@ -169,12 +169,30 @@ module.exports = function (app, passport) {
             }, function (error, response, body) {
                 var temp = JSON.parse(body);
                 marketCoins[1].value = parseFloat(temp.data[0].last_trade).toFixed(2);
-                
-                res.render("trade", {
-                    marketCoins: marketCoins,
-                    userCoins: userCoins,
-                    user: req.user
+
+                User.findOne({_id: userID}, function (err, user) {
+                    console.log(user);
+                    userCoins[0].amount = user.local.USD;
+                    userCoins[1].amount = user.local.BTC;
+                    userCoins[2].amount = user.local.ETH;
+
+                    var userInfo = {
+                        userName: user.local.username,
+                        firstName: user.local.name,
+                        lastName: user.local.lastname,
+                        pictureURL: user.local.picture
+                    };
+                    console.log("eth",user.ETH);
+
+                    res.render("trade", {
+                        marketCoins: marketCoins,
+                        userCoins: userCoins,
+                        user: req.user
+                    });
                 });
+                
+                
+                
             });
         });
     });
