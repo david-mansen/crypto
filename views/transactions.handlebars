@@ -53,13 +53,21 @@
       <table id="sellTable" class="table table-inverse" style="color:white; display:none">
         <thead>
           <tr>
-            <th>Date</th>
             <th>Currency</th>
             <th>Amount</th>
             <th>USD Balance</th>
           </tr>
         </thead>
         <tbody>
+
+          {{#each transactions}}
+            <tr>
+              <th>{{this.currency}}</th>
+              <th>{{this.amount}}</th>
+              <th>{{this.usdBalance}}</th>
+            </tr>
+          {{/each}}
+
           <tr>
             <td>1/1/2009 11:23:02</td>
             <td>Bitcoin</td>

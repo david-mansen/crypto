@@ -359,7 +359,7 @@ Highcharts.setOptions(Highcharts.theme);
                 }
 
                 //var timer = setInterval(dataRequestFunction, 2000);
-                var timer = setInterval(liveDataRequest, 5000);
+                var timer = setInterval(liveDataRequest, 3000);
 
                 var btcSeries = chart.series[0];
                 var ethSeries = chart.series[1];
@@ -373,7 +373,7 @@ Highcharts.setOptions(Highcharts.theme);
                 $("#ETHButton").click(function(){
                     btcSeries.hide();
                     ethSeries.show();
-                    chart.yAxis[0].setExtremes(100, 300);
+                    chart.yAxis[0].setExtremes(150, 200);
 
                 });
 

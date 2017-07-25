@@ -3,6 +3,7 @@
 var bodyParser = require('body-parser');
 
 var User = require("../models/user.js");
+var SellTransactions = require("../models/sellTransactions.js");
 var path = require('path');
 var userID = 0;
 var request = require("request");
@@ -35,10 +36,12 @@ module.exports = function (app, passport) {
 
     //process signup form
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/trade',
         failureRedirect: '/signup',
         failureFlash: true
-    }));
+    }), function(req,res){
+        userID = req.user._id;
+        res.redirect("/trade");
+    });
 //show transaction page
 //show trade page
 
@@ -78,12 +81,19 @@ module.exports = function (app, passport) {
                 lastName: user.local.lastname,
                 pictureURL: user.local.picture
             };
-            console.log("eth",user.ETH);
 
+            //
+            User.findOne({_id: userID}, function (err, saleTransaction) {
+           
             res.render("transactions", {
                 userCoins: userCoins,
-                user: req.user
+                user: req.user,
+                transactions: saleTransaction
             });
+            });
+            //
+
+            
         });
     });
 
@@ -156,10 +166,10 @@ module.exports = function (app, passport) {
 
         var marketCoins = [
             {
-                name: "Bitcoin (BTC)",
+                name: "BTC",
                 value: 0
             },{
-                name: "Ethereum (ETH)",
+                name: "ETH",
                 value: 0
             }];
 
@@ -213,6 +223,45 @@ module.exports = function (app, passport) {
         });
     });
 
+    app.post('/trade/sellcoin', function(req,res) {
+        var coinprice = req.body.coins;
+        var howmany = req.body.quantities;
+        var currency = req.body.crypto;
+
+        req.flash('success', 'No enough money on your Wallet! Please add !');
+
+        User.findOne({_id: userID}, function (err, user, done) {
+            var oldCoins = user.local.BTC;
+            if (oldCoins >= howmany) {
+                user.local.USD += (parseFloat(howmany)*parseFloat(coinprice));
+                user.local.BTC -= howmany;
+                console.log("here",currency,"blah");
+                user.save(function (err) {
+                    if (err) {
+                        console.error('ERROR!');
+                    }
+                    var sale = new SellTransactions();
+
+                    sale.userID = userID
+                    sale.currency = "BTC";
+                    sale.amount = howmany;
+                    sale.usdBalance = user.local.USD;
+
+                    // save the user
+                    sale.save(function(err) {
+                        if (err)
+                            throw err;
+                        
+                        res.redirect('/trade');
+                    });
+                    
+                });
+            } else if (oldCoins < howmany) {
+                res.redirect('/trade');
+            }
+        })
+    });
+
 
     app.post('/trade/buycoin', function (req, res) {
 
@@ -220,19 +269,17 @@ module.exports = function (app, passport) {
         var howmany = req.body.quantities;
         var currency = req.body.crypto;
 
-        console.log(currency + ' rs ==================>> ' + howmany);
+        console.log(req.body.coins + ' rs ==================>> ' + howmany);
 
         req.flash('success', 'No enough money on your Wallet! Please add !');
 
         User.findOne({_id: userID}, function (err, user, done) {
-
-
-
-
             var old = user.local.USD;
             if (old > coinprice || old == coinprice) {
-                var total = old - coinprice;
+                var total = parseFloat(old) - parseFloat(coinprice);
                 user.local.USD = total;
+                user.local.BTC += parseFloat(howmany);
+                console.log("here",currency,"blah");
                 user.save(function (err) {
                     if (err) {
                         console.error('ERROR!');
@@ -240,8 +287,7 @@ module.exports = function (app, passport) {
                     res.redirect('/trade');
                 });
             } else if (old < coinprice) {
-                res.render('profile', {tradebuycoin: req.flash('success'),
-                    user : req.user});
+                res.redirect('/trade');
             }
         })
     });

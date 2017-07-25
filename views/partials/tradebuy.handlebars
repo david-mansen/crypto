@@ -22,13 +22,14 @@
                     <h4>Currency to BUY</h4>
 
                     <select class="form-control coin" name="coins">
-    {{#each marketCoins}}
-        <option value="{{this.value}}" class="{{this.name}}">{{this.name}}</option>
-    {{/each}}
+                        {{#each marketCoins}}
+                            <option value="{{this.value}}" class="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
                         <div class="form-group">
                             <input name="crypto" type="text" class="form-control" id="checkbox" value="" style="display: none">
                         </div>
                     </select>
+
 
                     <hr>
                     <h4>Quantities</h4>

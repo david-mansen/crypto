@@ -9,7 +9,7 @@
             </div>
 
             <div class="modal-body">
-                <form class="form-horizontal" action="/trade/buycoin" method="post">
+                <form class="form-horizontal" action="/trade/sellcoin" method="post">
 
                     <div class="form-group">
                         <div class="input-group" style="margin: 0 20px 0 20px;">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <hr>
-                    <h4>Currency to BUY</h4>
+                    <h4>Currency to SELL</h4>
 
                     <select class="form-control coin" name="coins">
                         {{#each marketCoins}}
@@ -34,7 +34,7 @@
                     <h4>Quantities</h4>
                     <div class="form-group" style="margin: 0 5px 0 5px">
                         <label class="sr-only" for="amount">Quantities</label>
-                        <input type="number" step="0.01" class="form-control" name="quantities" id="amount" placeholder="Amount to Buy" required>
+                        <input type="number" step="0.01" class="form-control" name="quantities" id="amount" placeholder="Amount to Sell" required>
                     </div>
                     <hr>
                     <h4>Total $ Usd</h4>
